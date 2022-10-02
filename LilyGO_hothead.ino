@@ -14,7 +14,7 @@ TFT_eSPI tft = TFT_eSPI();
 TFT_eSprite sprite = TFT_eSprite(&tft);
 
 void setup() {
-  Serial.begin(115200);  // be sure to set USB CDC On Boot: "Enabled" 
+  Serial.begin(115200);  // be sure to set USB CDC On Boot: "Enabled"
   //(Serial print slows progres bar Demo)
   tft.init();
   tft.setRotation(3);
@@ -22,7 +22,7 @@ void setup() {
   tft.fillScreen(TFT_WHITE);  //horiz / vert<> position/dimension
   tft.pushImage(165, 0, 155, 170, hothead);
   tft.setTextSize(1);
-  sprite.createSprite(146, 170);
+  sprite.createSprite(165, 170);
 
   sprite.setTextColor(TFT_BLACK, TFT_WHITE);
   sprite.setTextDatum(4);
@@ -35,15 +35,13 @@ void setup() {
 
 //progress bar variables
 int progress = 0;
-int w = 120;
-int h = 18;
-int x = 12;
-int y = 90;
+int x;
+int y = 94;
 int blocks = 0;
 
 void loop() {
   //Serial.println("In loop!"); //(Serial print slows progres bar Demo)
-
+  sprite.setTextColor(TFT_BLACK, TFT_WHITE);
   sprite.fillSprite(TFT_WHITE);   // left side background colour
   sprite.setFreeFont(&Orbitron_Light_24);
   if (!digitalRead(0) && !digitalRead(14))  //reverse logic push for "0"
@@ -58,40 +56,42 @@ void loop() {
   sprite.drawString(String(progress) + "%", 75, 54);
 
   progress++;
-  if (progress >= 101)
+  if (progress >= 100)
     progress = 0;
   sprite.setTextColor(TFT_BLACK, TFT_WHITE);  //text colour
   blocks = progress / 5;
-  sprite.drawRoundRect(x, y, w, h, 3, TFT_RED); //rectangle colour
+  sprite.drawRoundRect(15, 90, 125, 18, 3, TFT_BLACK); //rectangle colour
   // progress blocks below here
-  for (int i = 0; i < blocks; i++)
-    if (progress < 33) {
-      sprite.fillRect(i * 5 + (x + 2) + (i * 1), y + 4, 5, 10, TFT_BLUE);
+  for (int i = 0; i < blocks; i++) {
+    x = i * 5 + i + 20;//OK, x location i is increment 14 is a location offset
+    if (progress < 36) {
+      sprite.fillRect(x, y, 5, 10, TFT_BLUE); //block size horiz-vert
     }
-    else if (progress >= 33 && progress < 66) {
-      sprite.fillRect(i * 5 + (x + 2) + (i * 1), y + 4, 5, 10, TFT_GREEN);
+    else if (progress >= 36 && progress < 66) {
+      sprite.fillRect(x, y, 5, 10, TFT_GREEN);
     }
     else {
-      sprite.fillRect(i * 5 + (x + 2) + (i * 1), y + 4, 5, 10, TFT_RED);
+      sprite.fillRect(x, y, 5, 10, TFT_RED);
     }
-  sprite.drawRect(5, 124, 65, 22, TFT_BLACK);  //"left" and "right" text boxes
-  sprite.drawRect(80, 124, 65, 22, TFT_BLACK);  
-  if (digitalRead(0)) {                        //  normally "on" level "true". 
-    sprite.drawString("left pin0", 36, 134, 2);//"Push" is active, level "false"
+  }
+  sprite.drawRect(5, 124, 70, 22, TFT_BLACK);  //"left" and "right" text boxes
+  sprite.drawRect(85, 124, 70, 22, TFT_BLACK);
+  if (digitalRead(0)) {                        //  normally "on" level "true".
+    sprite.drawString("left pin 0", 40, 134, 2);//"Push" is active, level "false"
   }
   else {
-    sprite.drawString("LEFT", 30, 134, 2);
+    sprite.drawString("LEFT", 40, 134, 2);
   }
 
   if (digitalRead(14)) {
-    sprite.drawString("right p14", 113, 134, 2);
+    sprite.drawString("right p14", 120, 134, 2);
   }
   else {
-    sprite.drawString("RIGHT", 113, 134, 2);
+    sprite.drawString("RIGHT", 120, 134, 2);
   }
+  sprite.setTextColor(TFT_RED, TFT_WHITE);
   sprite.setTextFont(2);
   sprite.drawString("Own it!!!", 80, 158);  //learn the board and take control!
-
   sprite.pushSprite(0, 0);
   delay(100);
 }
