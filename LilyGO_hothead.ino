@@ -14,7 +14,7 @@ TFT_eSPI tft = TFT_eSPI();
 TFT_eSprite sprite = TFT_eSprite(&tft);
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(115200); // be sure to set USB CDC On Boot: "Enabled"
   tft.init();
   tft.setRotation(3);
   tft.setSwapBytes(true);

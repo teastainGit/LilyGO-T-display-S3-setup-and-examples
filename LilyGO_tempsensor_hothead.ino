@@ -21,6 +21,7 @@ TFT_eSPI tft = TFT_eSPI();
 TFT_eSprite sprite = TFT_eSprite(&tft);
 
 void setup() {
+	Serial.begin(115200);  // be sure to set USB CDC On Boot: "Enabled"
   Wire.begin(43, 44);  //SDA, SCL
   tft.init();
   tft.setRotation(3);
@@ -33,11 +34,13 @@ void setup() {
   sprite.setTextColor(TFT_BLACK, TFT_WHITE);
   sprite.setTextDatum(4);
   delay(500);
+  Serial.println("In setup!");
   pinMode(14, INPUT); //Right button proven to be pulled up, push = 0
   pinMode(0, INPUT); //Left button proven to be pulled up, push = 0
 }
 
 void loop() {
+	Serial.println("In loop!");
   Wire.beginTransmission(0x44);  //0x44 for M5Stack ENV  (0x45 is DFRobot)
   Wire.write(0x2C);               //show all the "wheels and gears"
   Wire.write(0x06);
