@@ -34,7 +34,7 @@ parrallel interface to the LCD instead of SPI or I2C. ( A 50 year old concept, l
 Open the code and read and understand it and you're good to go. 
 Try pushing both buttons at once!
 The rest of the code is simple and helps you make your own programs.
-The second program is:LilyGO_tempsensor_hothead.ino" which just substitutes
+The second program is: LilyGO_tempsensor_hothead.ino" which just substitutes
 a I2C temerature sensor in place of the progress bar.
 The sensor is an M5Stack ENV type, but both Adafruit and DFRobot make a 
 similar board, but possibly a different I2C address. This is 0x44, but some
