@@ -14,7 +14,8 @@ https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32
 into Arduino Preferences, Additional Boards Manager and wait for it to load...
 From Arduino Tools, Board: select ESP32 Arduino, ESP32S3 Dev Module. Right at the top!
 Please see attached screenshot, "Select Board.png"
-Make sure that you change Flash Size to 8M and Partition Scheme to 8M with spiffs
+Make sure that you change Flash Size to 8M and Partition Scheme to 8M with spiffs.
+To enable serial monitor function for debugging, etc, be sure to also set USB CDC On Boot "Enabled".
 All settings shown, run on my computer just as shown.
 My HotHead.h logo needs to be in the same folder as each sketch.
 #include "TFT_eSPI.h" is in with a bunch of files on LilyGO's GitHub. 
