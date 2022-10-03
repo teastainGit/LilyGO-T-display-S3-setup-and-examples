@@ -9,7 +9,7 @@
 */
 #include "TFT_eSPI.h"
 #include "hothead.h"
-
+unsigned  colour = 0xFFFF;
 TFT_eSPI tft = TFT_eSPI();
 TFT_eSprite sprite = TFT_eSprite(&tft);
 
@@ -63,21 +63,23 @@ void loop() {
   sprite.drawRoundRect(15, 90, 125, 18, 3, TFT_BLACK); //rectangle colour
   // progress blocks below here
   for (int i = 0; i < blocks; i++) {
-    x = i * 5 + i + 20;//OK, x location i is increment 14 is a location offset
-    if (progress < 36) {
-      sprite.fillRect(x, y, 5, 10, TFT_BLUE); //block size horiz-vert
+    x = i * 5 + i + 20;//x location i is increment 20 is a location offset
+    if (progress < 40) {
+      colour = 0x001F;  //RGB, "TFT_BLUE"
     }
-    else if (progress >= 36 && progress < 66) {
-      sprite.fillRect(x, y, 5, 10, TFT_GREEN);
+    else if (progress > 40 && progress < 75) {
+      colour = 0x07E0;  //GREEN
     }
     else {
-      sprite.fillRect(x, y, 5, 10, TFT_RED);
+      colour = 0xF800;  //RED
     }
+    sprite.fillRect(x, y, 5, 10, colour);
   }
-  sprite.drawRect(5, 124, 70, 22, TFT_BLACK);  //"left" and "right" text boxes
+
+  sprite.drawRect(5, 124, 70, 22, TFT_BLACK);//"left" and "right" text boxes
   sprite.drawRect(85, 124, 70, 22, TFT_BLACK);
-  if (digitalRead(0)) {                        //  normally "on" level "true".
-    sprite.drawString("left pin 0", 40, 134, 2);//"Push" is active, level "false"
+  if (digitalRead(0)) {  //  normally open sw, pulled up.
+    sprite.drawString("left pin 0", 40, 134, 2);
   }
   else {
     sprite.drawString("LEFT", 40, 134, 2);
@@ -91,7 +93,7 @@ void loop() {
   }
   sprite.setTextColor(TFT_RED, TFT_WHITE);
   sprite.setTextFont(2);
-  sprite.drawString("Own it!!!", 80, 158);  //learn the board and take control!
+  sprite.drawString("Own it!!!", 80, 158);//learn the board and take control!
   sprite.pushSprite(0, 0);
   delay(100);
 }
