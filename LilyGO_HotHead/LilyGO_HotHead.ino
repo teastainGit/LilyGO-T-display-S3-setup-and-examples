@@ -67,7 +67,7 @@ void loop() {
     if (progress < 40) {
       colour = 0x001F;  //RGB, "TFT_BLUE"
     }
-    else if (progress > 40 && progress < 75) {
+    else if (progress >= 40 && progress < 75) {
       colour = 0x07E0;  //GREEN
     }
     else {
