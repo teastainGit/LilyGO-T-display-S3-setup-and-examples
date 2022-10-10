@@ -12,10 +12,16 @@
 unsigned  colour = 0xFFFF;
 TFT_eSPI tft = TFT_eSPI();
 TFT_eSprite sprite = TFT_eSprite(&tft);
+#define LCDpin 15
 
 void setup() {
+  pinMode(LCDpin, OUTPUT);  //triggers the LCD backlight
+  digitalWrite(LCDpin, LOW);
+  delay(500);
+  digitalWrite(LCDpin, HIGH);
   Serial.begin(115200);  // be sure to set USB CDC On Boot: "Enabled"
   //(Serial print slows progres bar Demo)
+  delay(500);
   tft.init();
   tft.setRotation(3);
   tft.setSwapBytes(true);
@@ -28,9 +34,10 @@ void setup() {
   sprite.setTextDatum(4);
   delay(500);
   Serial.println("In setup!");
-  delay(1000);
+  delay(2000);
   pinMode(14, INPUT); //Right button proven to be pulled up, push = 0
   pinMode(0, INPUT); //Left button proven to be pulled up, push = 0
+  delay(500);
 }
 
 //progress bar variables
