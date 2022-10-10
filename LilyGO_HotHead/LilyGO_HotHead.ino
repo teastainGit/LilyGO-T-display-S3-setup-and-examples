@@ -16,8 +16,6 @@ TFT_eSprite sprite = TFT_eSprite(&tft);
 
 void setup() {
   pinMode(LCDpin, OUTPUT);  //triggers the LCD backlight
-  digitalWrite(LCDpin, LOW);
-  delay(500);
   digitalWrite(LCDpin, HIGH);
   Serial.begin(115200);  // be sure to set USB CDC On Boot: "Enabled"
   //(Serial print slows progres bar Demo)
