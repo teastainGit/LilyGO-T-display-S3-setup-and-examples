@@ -60,7 +60,7 @@ void loop() {
   }
   sprite.setFreeFont(&Orbitron_Light_32);
   sprite.setTextColor(TFT_BLUE, TFT_WHITE);
-  sprite.drawString(String(progress) + "%", 75, 54);
+  sprite.drawString(String(progress) + "%", 75, 75);
 
   progress++;
   if (progress >= 100)
@@ -103,4 +103,5 @@ void loop() {
   sprite.drawString("Own it!!!", 80, 158);//learn the board and take control!
   sprite.pushSprite(0, 0);
   delay(100);
+
 }
