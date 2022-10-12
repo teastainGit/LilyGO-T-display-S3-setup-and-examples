@@ -19,8 +19,11 @@ unsigned int data[2];
 
 TFT_eSPI tft = TFT_eSPI();
 TFT_eSprite sprite = TFT_eSprite(&tft);
+#define LCDpin 15
 
 void setup() {
+  pinMode(LCDpin, OUTPUT);  //triggers the LCD backlight
+  digitalWrite(LCDpin, HIGH);
 	Serial.begin(115200);  // be sure to set USB CDC On Boot: "Enabled"
   Wire.begin(43, 44);  //SDA, SCL
   tft.init();
