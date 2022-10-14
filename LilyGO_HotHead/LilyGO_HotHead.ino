@@ -58,7 +58,7 @@ void loop() {
   }
   sprite.setFreeFont(&Orbitron_Light_32);
   sprite.setTextColor(TFT_BLUE, TFT_WHITE);
-  sprite.drawString(String(progress) + "%", 75, 75);
+  sprite.drawString(String(progress) + "%", 75, 55);
 
   progress++;
   if (progress >= 100)
