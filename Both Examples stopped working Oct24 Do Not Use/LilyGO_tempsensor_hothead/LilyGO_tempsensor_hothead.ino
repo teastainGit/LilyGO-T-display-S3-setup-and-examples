@@ -22,10 +22,12 @@ TFT_eSprite sprite = TFT_eSprite(&tft);
 #define LCDpin 15
 
 void setup() {
+
   pinMode(LCDpin, OUTPUT);  //triggers the LCD backlight
   digitalWrite(LCDpin, HIGH);
-	Serial.begin(115200);  // be sure to set USB CDC On Boot: "Enabled"
+  Serial.begin(115200);  // be sure to set USB CDC On Boot: "Enabled"
   Wire.begin(43, 44);  //SDA, SCL
+  Serial.print("In setup");
   tft.init();
   tft.setRotation(3);
   tft.setSwapBytes(true);
@@ -43,7 +45,7 @@ void setup() {
 }
 
 void loop() {
-	Serial.println("In loop!");
+  Serial.println("In loop!");
   Wire.beginTransmission(0x44);  //0x44 for M5Stack ENV  (0x45 is DFRobot)
   Wire.write(0x2C);               //show all the "wheels and gears"
   Wire.write(0x06);
@@ -55,7 +57,7 @@ void loop() {
   data[1] = Wire.read();
   delay(50);
   cTemp = ((((data[0] * 256.0) + data[1]) * 175) / 65535.0) - 45;
-
+  Serial.println(cTemp);
   sprite.fillSprite(TFT_WHITE);   // left side background colour
   sprite.setFreeFont(&Orbitron_Light_24);
   if (!digitalRead(0) && !digitalRead(14))  // reverse logic push for "0"
@@ -88,5 +90,5 @@ void loop() {
   sprite.setTextFont(2);
   sprite.drawString("SHT3X @addr 0x44", 80, 100);
   sprite.pushSprite(0, 0);
-  delay(100);
+  delay(500);
 }
