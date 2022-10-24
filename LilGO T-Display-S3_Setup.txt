@@ -32,7 +32,7 @@ https://github.com/Xinyuan-LilyGO/T-Display-S3
 by pressing the green button "Code" and after downloading, expand the Zip, placing 
 the file folder "T-Display-S3-main; into your Arduino libraries folder...
 then… find the file "TFT_eSPI" and MOVE it from the folder into the libraries folder.
-Don't ask why!
+Do Not use (or update) the Arduino library! It does not work with LilyGO T-Display S3 !
 
 My repository contains two examples of simple documented easy to understand program code. 
 The first one to try is "LilyGO_hothead.ino" which demos most of the common things you need to program this board:
