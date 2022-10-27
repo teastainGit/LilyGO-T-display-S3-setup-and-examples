@@ -100,6 +100,6 @@ void loop() {
   sprite.setTextFont(2);
   sprite.drawString("Own it!!!", 80, 158);//learn the board and take control!
   sprite.pushSprite(0, 0);
-  delay(100);
+  delay(75);
 
 }
