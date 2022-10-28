@@ -13,6 +13,12 @@ unsigned  colour = 0xFFFF;
 TFT_eSPI tft = TFT_eSPI();
 TFT_eSprite sprite = TFT_eSprite(&tft);
 #define LCDpin 15
+//progress bar variables
+int progress = 0;
+int x;
+int y = 94;
+int blocks = 0;
+int i = 0;
 
 void setup() {
   pinMode(LCDpin, OUTPUT);  //triggers the LCD backlight
@@ -38,11 +44,6 @@ void setup() {
   delay(500);
 }
 
-//progress bar variables
-int progress = 0;
-int x;
-int y = 94;
-int blocks = 0;
 
 void loop() {
   Serial.println("In loop!"); //(Serial print slows progres bar Demo)
@@ -67,7 +68,7 @@ void loop() {
   blocks = progress / 5;
   sprite.drawRoundRect(15, 90, 125, 18, 3, TFT_BLACK); //rectangle colour
   // progress blocks below here
-  for (int i = 0; i < blocks; i++) {
+  for ( i = 0; i < blocks; i++) {
     x = i * 5 + i + 20;//x location i is increment 20 is a location offset
     if (progress < 40) {
       colour = 0x001F;  //RGB, "TFT_BLUE"
@@ -80,7 +81,7 @@ void loop() {
     }
     sprite.fillRect(x, y, 5, 10, colour);
   }
-
+  Serial.println(i);
   sprite.drawRect(5, 124, 70, 22, TFT_BLACK);//"left" and "right" text boxes
   sprite.drawRect(85, 124, 70, 22, TFT_BLACK);
   if (digitalRead(0)) {  //  normally open sw, pulled up.
