@@ -54,7 +54,7 @@ similar board, but possibly a different I2C address. This is 0x44, but some
 are 0x45.
 Instead of a library to try and find, I put the sensor code right in line
 with the sketch. This also helps you understand how I2C works!!!
-You can email me at teastain911@gmail.com.
+You can email me at teastain@me.com
 I'm open to suggestions!
 
 -Terry

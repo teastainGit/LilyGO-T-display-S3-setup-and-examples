@@ -47,6 +47,7 @@ void setup() {
 
 void loop() {
   Serial.println("In loop!"); //(Serial print slows progres bar Demo)
+  Serial.println(i);          //(Serial print slows progres bar Demo)
   sprite.setTextColor(TFT_BLACK, TFT_WHITE);
   sprite.fillSprite(TFT_WHITE);   // left side background colour
   sprite.setFreeFont(&Orbitron_Light_24);
@@ -81,7 +82,6 @@ void loop() {
     }
     sprite.fillRect(x, y, 5, 10, colour);
   }
-  Serial.println(i);
   sprite.drawRect(5, 124, 70, 22, TFT_BLACK);//"left" and "right" text boxes
   sprite.drawRect(85, 124, 70, 22, TFT_BLACK);
   if (digitalRead(0)) {  //  normally open sw, pulled up.
