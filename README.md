@@ -1,9 +1,9 @@
-# LillyGO-T-display-S3-setup-and-examples
+# LilyGO-T-display-S3-setup-and-examples
 LilyGO T-Display S3 setup and examples for Arduino IDE.
 These instructions DO NOT WORK for other LilyGO boards, especially the 
 similarly named LilyGO T-Display!
 The setup of the brand new LilyGO T-Display S3 is not well documented!
-Here is what I found that works, with help from watching Youtuber Volos.
+Here is what I found that works, with help from watching YouTuber Volos.
 Included in this GitHub repository are detailed setup instructions and several
 working, tested, examples.
  
