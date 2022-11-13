@@ -59,4 +59,23 @@ with the sketch. This also helps you understand how I2C works!!!
 You can email me at teastain@me.com
 I'm open to suggestions!
 
+Solutions to common startup issues:
+A) Unit seems "bricked"
+   LCD does not display, unit remains dark with no white backlight:
+	Add 	#define LCDpin 15, just before the setup and then in setup add:
+	pinMode(LCDpin, OUTPUT); 		//"triggers the LCD backlight,
+	digitalWrite(LCDpin, HIGH);)	//on startup"
+
+B) Can run on USB power but not battery connector:
+	Add the lines from above (LilyGO variously refers to them as "LCD power on" OR "PIN_POWER_ON")
+	Thanks to user RobLatour for finding this cure for the battery issue!
+
+C) Unit seems "bricked" 2
+	Cannot see Serial.Print on Arduino Serial Monitor
+	To enable serial monitor function for debugging, you must also set 
+	USB CDC On Boot "Enabled"
+	in the Arduino board parameters
+	
+			
+
 -Terry
