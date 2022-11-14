@@ -62,18 +62,17 @@ I'm open to suggestions!
 Solutions to common startup issues:
 A) Unit seems "bricked" 1
    LCD does not display, unit remains dark with no white backlight:
-	Add #define LCDpin 15		// just before the setup and then in setup add:
+	Add #define LCDpin 15	// just before the setup and then in setup add:
 	pinMode(LCDpin, OUTPUT); 	//"triggers the LCD backlight,
 	digitalWrite(LCDpin, HIGH);)	//on startup"
 
-B) Unit seems "bricked" 2
-	Cannot see Serial.Print on Arduino Serial Monitor
+B) Cannot see Serial.Print on Arduino Serial Monitor
 	To enable serial monitor function for debugging, you must also set 
 	USB CDC On Boot "Enabled"
 	in the Arduino board parameters
 
 C) Can run on USB power but not battery connector:
-	Add #define LCDpin 15		// just before the setup and then in setup add:
+	Add #define LCDpin 15	// just before the setup and then in setup add:
 	pinMode(LCDpin, OUTPUT); 	//"triggers the LCD backlight,
 	digitalWrite(LCDpin, HIGH);)	//on startup"
 	
