@@ -31,7 +31,7 @@ All settings shown, run on my computer just as shown.
 
 (if you are NOT running one of my sketches, you should add:
 #define LCDpin 15, just before the setup and then in setup add:
-pinMode(LCDpin, OUTPUT); 		//"triggers the LCD backlight,
+pinMode(LCDpin, OUTPUT); 	//"triggers the LCD backlight,
 digitalWrite(LCDpin, HIGH);)	//on startup"
 
 My repository contains two examples of simple documented easy to understand program code. 
@@ -62,7 +62,7 @@ I'm open to suggestions!
 Solutions to common startup issues:
 A) Unit seems "bricked" 1
    LCD does not display, unit remains dark with no white backlight:
-	Add #define LCDpin 15	// just before the setup and then in setup add:
+	Add #define LCDpin 15		// just before the setup and then in setup add:
 	pinMode(LCDpin, OUTPUT); 	//"triggers the LCD backlight,
 	digitalWrite(LCDpin, HIGH);)	//on startup"
 
@@ -72,7 +72,7 @@ B) Cannot see Serial.Print on Arduino Serial Monitor
 	in the Arduino board parameters
 
 C) Can run on USB power but not battery connector:
-	Add #define LCDpin 15	// just before the setup and then in setup add:
+	Add #define LCDpin 15		// just before the setup and then in setup add:
 	pinMode(LCDpin, OUTPUT); 	//"triggers the LCD backlight,
 	digitalWrite(LCDpin, HIGH);)	//on startup"
 	
