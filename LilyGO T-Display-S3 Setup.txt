@@ -72,7 +72,7 @@ B) Cannot see Serial.Print on Arduino Serial Monitor
 
 C) Can run on USB power but not battery connector:
 	Add #define LCDpin 15		// just before the setup and then in setup add:
-	pinMode(LCDpin, OUTPUT); 	//"triggers the LCD backlight,
+	pinMode(LCDpin, OUTPUT); 	//"triggers the LCD backlight, and enables battery power
 	digitalWrite(LCDpin, HIGH);)	//on startup"
 	
 	(LilyGO variously refers to them as "LCD power on" OR "PIN_POWER_ON")
