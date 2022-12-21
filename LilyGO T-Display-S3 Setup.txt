@@ -20,10 +20,11 @@ If your Arduino IDE does not already have "ESP32 Arduino" as shown paste this:
 https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
 into Arduino Preferences, Additional Boards Manager and wait for it to load...
 From Arduino Tools, Board: select ESP32 Arduino, ESP32S3 Dev Module. Right at the top!
-Please see attached screenshot, "Select Board.png"
+Please see attached screenshot, "Arduino_Config.png"
 Make sure that you change:
-Flash Size to 8M
-Partition Scheme to 8M with spiffs.
+Flash Size to 16M
+Partition Scheme to "Huge APP (3MB No OTA/1MB SPIFFS)"
+PSRAM: "OPI PSRAM"
 
 To enable serial monitor function for debugging, etc, be sure to also set 
 USB CDC On Boot "Enabled".
