@@ -84,6 +84,10 @@ Addendum:
 <on-board LED colours and function:>
 	Green LED indicates board is powered up (Power Enabled) using either USB or Battery
 	Red   LED indicates Board is powered up by USB only 
+
+The T-Display S3 LCD backlight can be dimmed by following the instructions in:
+LCD Dimmer.txt in this repository.
+
 You can email me at teastain@me.com
 I'm open to suggestions!
 -Terry
