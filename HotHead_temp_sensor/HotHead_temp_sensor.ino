@@ -1,15 +1,3 @@
-/*BN: ESP32S3 Dev Module
-  VID: 303a
-  PID: 1001
-  SN: 68:B6:B3:21:63:18
-  Flash Size 8M
-  Partition Scheme 8M with SPIFFS
-  Display specs
-  Horiz     Vert
-  <320>----^v170
-  SHT3X temp and humiditysensor @addr 0x44
-  (also sold as M5Stack ENV series)
-*/
 #include <Wire.h>
 #include "TFT_eSPI.h"
 #include "hothead.h"
@@ -19,12 +7,15 @@ unsigned int data[2];
 
 TFT_eSPI tft = TFT_eSPI();
 TFT_eSprite sprite = TFT_eSprite(&tft);
-#define LCDpin 15
+#define PIN_POWER_ON 15 //power enable pin for LCD and use battery if installed
+#define PIN_LCD_BL 38   // BackLight enable pin (see Dimming.txt)
 
 void setup() {
 
-  pinMode(LCDpin, OUTPUT);  //triggers the LCD backlight
-  digitalWrite(LCDpin, HIGH);
+  pinMode(PIN_POWER_ON, OUTPUT);  //triggers the LCD backlight
+  pinMode(PIN_LCD_BL, OUTPUT);  //triggers the LCD backlight
+  digitalWrite(PIN_POWER_ON, HIGH);
+  digitalWrite(PIN_LCD_BL, HIGH);
   Serial.begin(115200);  // be sure to set USB CDC On Boot: "Enabled"
   Wire.begin(43, 44);  //SDA, SCL
   Serial.print("In setup");
@@ -60,33 +51,11 @@ void loop() {
   Serial.println(cTemp);
   sprite.fillSprite(TFT_WHITE);   // left side background colour
   sprite.setFreeFont(&Orbitron_Light_24);
-  if (!digitalRead(0) && !digitalRead(14))  // reverse logic push for "0"
-  {
-    sprite.drawString(" BoneHead!", 75, 16);
-  }
-  else {
-    sprite.drawString("HotHead!", 75, 16);
-  }
-  sprite.setFreeFont(&Orbitron_Light_32);
+  sprite.drawString("HotHead!", 75, 16);
   sprite.setTextColor(TFT_BLUE, TFT_WHITE);
-  sprite.drawString(String(cTemp, 1) + "C", 75, 54);
+  sprite.drawString(String(cTemp, 1) + " degC", 76, 54);
+  sprite.setTextColor(TFT_BLACK, TFT_WHITE);
 
-  sprite.drawRect(5, 124, 65, 22, TFT_BLACK);  //"left" and "right" text boxes
-  sprite.drawRect(80, 124, 65, 22, TFT_BLACK);
-  if (digitalRead(0)) {                      //  normally "on" level "true".
-    sprite.drawString("left pin0", 35, 134, 2);//"Push" is active, level "false"
-  }
-  else {
-    sprite.drawString("LEFT", 30, 134, 2);
-  }
-  if (digitalRead(14)) {
-    sprite.drawString("right p14", 113, 134, 2);
-  }
-  else {
-    sprite.drawString("RIGHT", 113, 134, 2);
-  }
-  sprite.setTextFont(2);
-  sprite.drawString("Own it!!!", 80, 158);//learn the board and take control!
   sprite.setTextFont(2);
   sprite.drawString("SHT3X @addr 0x44", 80, 100);
   sprite.pushSprite(0, 0);

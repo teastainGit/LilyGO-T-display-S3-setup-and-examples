@@ -1,18 +1,12 @@
-/*BN: ESP32S3 Dev Module
-  VID: 303a
-  PID: 1001
-  SN: 68:B6:B3:21:63:18
-  Flash Size 8M
-  Partition Scheme 8M with SPIFFS
-  Horiz     Vert
-  <320>----^v170
-*/
+  // horiz = <320>----vertical = ^v170
+
 #include "TFT_eSPI.h"
 #include "hothead.h"
 unsigned  colour = 0xFFFF;
 TFT_eSPI tft = TFT_eSPI();
 TFT_eSprite sprite = TFT_eSprite(&tft);
-#define LCDpin 15
+#define PIN_POWER_ON 15 //power enable pin for LCD and use battery if installed
+#define PIN_LCD_BL 38   // BackLight enable pin (see Dimming.txt)
 //progress bar variables
 int progress = 0;
 int x;
@@ -21,8 +15,10 @@ int blocks = 0;
 int i = 0;
 
 void setup() {
-  pinMode(LCDpin, OUTPUT);  //triggers the LCD backlight
-  digitalWrite(LCDpin, HIGH);
+  pinMode(PIN_POWER_ON, OUTPUT);  //triggers the LCD backlight
+  pinMode(PIN_LCD_BL, OUTPUT);  //triggers the LCD backlight
+  digitalWrite(PIN_POWER_ON, HIGH);
+  digitalWrite(PIN_LCD_BL, HIGH);
   Serial.begin(115200);  // be sure to set USB CDC On Boot: "Enabled"
   //(Serial print slows progres bar Demo)
   delay(500);
