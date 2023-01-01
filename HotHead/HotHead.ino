@@ -1,101 +1,94 @@
-  // horiz = <320>----vertical = ^v170
 
 #include "TFT_eSPI.h"
 #include "hothead.h"
 unsigned  colour = 0xFFFF;
 TFT_eSPI tft = TFT_eSPI();
-TFT_eSprite sprite = TFT_eSprite(&tft);
-#define PIN_POWER_ON 15 //power enable pin for LCD and use battery if installed
+#define topbutton 0
+#define lowerbutton 14
+#define PIN_POWER_ON 15 // LCD and battery Power Enable
 #define PIN_LCD_BL 38   // BackLight enable pin (see Dimming.txt)
-//progress bar variables
 int progress = 0;
 int x;
-int y = 94;
 int blocks = 0;
 int i = 0;
 
 void setup() {
+
   pinMode(PIN_POWER_ON, OUTPUT);  //triggers the LCD backlight
-  pinMode(PIN_LCD_BL, OUTPUT);  //triggers the LCD backlight
+  pinMode(PIN_LCD_BL, OUTPUT);    // BackLight enable pin
+  pinMode(lowerbutton, INPUT);     //Right button pulled up, push = 0
+  pinMode(topbutton, INPUT);      //Left button  pulled up, push = 0
+  delay(100);
   digitalWrite(PIN_POWER_ON, HIGH);
   digitalWrite(PIN_LCD_BL, HIGH);
   Serial.begin(115200);  // be sure to set USB CDC On Boot: "Enabled"
   //(Serial print slows progres bar Demo)
-  delay(500);
+  delay(100);
   tft.init();
   tft.setRotation(3);
   tft.setSwapBytes(true);
-  tft.fillScreen(TFT_WHITE);  //horiz / vert<> position/dimension
+  tft.fillScreen(TFT_BLACK);  //horiz / vert<> position/dimension
   tft.pushImage(165, 0, 155, 170, hothead);
   tft.setTextSize(1);
-  sprite.createSprite(165, 170);
+  tft.setTextDatum(4);
 
-  sprite.setTextColor(TFT_BLACK, TFT_WHITE);
-  sprite.setTextDatum(4);
-  delay(500);
+  delay(100);
   Serial.println("In setup!");
+
   delay(2000);
-  pinMode(14, INPUT); //Right button proven to be pulled up, push = 0
-  pinMode(0, INPUT); //Left button proven to be pulled up, push = 0
-  delay(500);
 }
 
-
 void loop() {
-  Serial.println("In loop!"); //(Serial print slows progress bar Demo)
-  Serial.println(i);          //(Serial print slows progress bar Demo)
-  sprite.setTextColor(TFT_BLACK, TFT_WHITE);
-  sprite.fillSprite(TFT_WHITE);   // left side background colour
-  sprite.setFreeFont(&Orbitron_Light_24);
-  if (!digitalRead(0) && !digitalRead(14))  //reverse logic push for "0"
+  //Serial.print("progress =");     //(Serial print slows progress bar Demo)
+  Serial.println(progress);
+  tft.setTextColor(TFT_GREEN, TFT_BLACK);
+  if (!digitalRead(topbutton) && !digitalRead(lowerbutton))
   {
-    sprite.drawString(" BoneHead!", 74, 16);
+    tft.drawString(" BoneHead!", 77, 55, 4);
   }
   else {
-    sprite.drawString("HotHead!", 75, 16);
+    tft.drawString("  HotHead!  ", 80, 55, 4);
   }
-  sprite.setFreeFont(&Orbitron_Light_32);
-  sprite.setTextColor(TFT_BLUE, TFT_WHITE);
-  sprite.drawString(String(progress) + "%", 75, 55);
-
+  tft.setTextColor(TFT_WHITE, TFT_BLACK);
+  tft.fillRect(39, 78, 70, 13, TFT_BLACK);
+  tft.drawString(String(progress) + "% Demo", 75, 85, 2);
   progress++;
   if (progress >= 100)
     progress = 0;
-  sprite.setTextColor(TFT_BLACK, TFT_WHITE);  //text colour
   blocks = progress / 5;
-  sprite.drawRoundRect(15, 90, 125, 18, 3, TFT_BLACK); //rectangle colour
+  tft.drawRoundRect(15, 110, 125, 18, 3, TFT_GREEN); //rectangle colour
   // progress blocks below here
   for ( i = 0; i < blocks; i++) {
     x = i * 5 + i + 20;//x location i is increment 20 is a location offset
-    if (progress < 40) {
-      colour = 0x001F;  //RGB, "TFT_BLUE"
+     if (progress > 0 && progress < 40) {
+      colour = 0x001F;  //BLUE
     }
-    else if (progress >= 40 && progress < 75) {
+    if (progress > 40 && progress < 75) {
       colour = 0x07E0;  //GREEN
     }
-    else {
+    if (progress > 75 && progress < 99) {
       colour = 0xF800;  //RED
     }
-    sprite.fillRect(x, y, 5, 10, colour);
+    if (progress > 98) {
+      colour = 0x0000;  //BLACK
+    }
+    tft.fillRect(x, 114, 5, 10, colour);
   }
-  sprite.drawRect(5, 124, 70, 22, TFT_BLACK);//"left" and "right" text boxes
-  sprite.drawRect(85, 124, 70, 22, TFT_BLACK);
+  tft.drawRect(5, 5, 95, 22, TFT_BLUE);  //"Top"  text box
+  tft.drawRect(5, 146, 110, 22, TFT_BLUE); // "Bottom" text box
   if (digitalRead(0)) {  //  normally open sw, pulled up.
-    sprite.drawString("left pin 0", 40, 134, 2);
+    tft.setTextColor(TFT_GREEN, TFT_BLACK);
   }
   else {
-    sprite.drawString("LEFT", 40, 134, 2);
+    tft.setTextColor(TFT_RED, TFT_BLACK);
   }
-
+  tft.drawString("< Top pin 0", 45, 15, 2);
   if (digitalRead(14)) {
-    sprite.drawString("right p14", 120, 134, 2);
+    tft.setTextColor(TFT_GREEN, TFT_BLACK);
   }
   else {
-    sprite.drawString("RIGHT", 120, 134, 2);
+    tft.setTextColor(TFT_RED, TFT_BLACK);
   }
-  sprite.setTextColor(TFT_RED, TFT_WHITE);
-  sprite.setTextFont(2);
-  sprite.drawString("Own it!!!", 80, 158);//learn the board and take control!
-  sprite.pushSprite(0, 0);
-  delay(75);
+  tft.drawString("< Bottom p14", 55, 157, 2);
+  delay(30);
 }
