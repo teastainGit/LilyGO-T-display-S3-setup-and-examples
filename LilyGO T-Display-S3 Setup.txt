@@ -86,7 +86,9 @@ Addendum:
 	Red   LED indicates Board is powered up by USB only 
 
 The T-Display S3 LCD backlight can be dimmed by following the instructions in:
-LCD Dimmer.txt in this repository.
+LCD Dimmer.txt in this repository or try the HotHead_Dimmer example.
+
+Due to the complicated specifics of the Arduino download settings all examples now include setup.h in the .ino folder for convenience.
 
 You can email me at teastain@me.com
 I'm open to suggestions!
