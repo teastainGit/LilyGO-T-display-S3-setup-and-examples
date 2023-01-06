@@ -31,9 +31,9 @@ USB CDC On Boot "Enabled".
 All settings shown, run on my computer just as shown.
 
 (if you are NOT running one of my sketches, you should add:
-#define LCDpin 15, just before the setup and then in setup add:
+#define LCDpin 15			 just before the setup and then in setup add:
 pinMode(LCDpin, OUTPUT); 	//"triggers the LCD backlight,
-digitalWrite(LCDpin, HIGH);)	//on startup"
+digitalWrite(LCDpin, HIGH);	//on startup"
 
 My repository contains two examples of simple documented easy to understand program code. 
 The first one to try is "LilyGO_hothead.ino" which demos most of the common things you need to program this board:
