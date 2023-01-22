@@ -7,11 +7,12 @@ TFT_eSPI tft = TFT_eSPI();
 #define topbutton 0
 #define lowerbutton 14
 #define PIN_POWER_ON 15
+#define PIN_LCD_BL  38
 
 int x;
 int blocks = 0;
 int percentdim = 0;
-const int PIN_LCD_BL = 38;
+
 const int freq = 1000;
 const int ledChannel = 0;
 const int resolution = 8;
