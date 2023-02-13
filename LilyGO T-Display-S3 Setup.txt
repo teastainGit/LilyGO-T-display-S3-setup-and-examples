@@ -5,12 +5,25 @@ https://github.com/Xinyuan-LilyGO/T-Display-S3
 
 by pressing the green button "Code" and after downloading, expand the Zip,
 
-Copy the unzipped files you find in the 'lib' folder (from the newly unzipped folder) into your Arduino 'libraries' folder.
+In your libraries delete folders “TFT_eSPI" and ‘lvgl" and delete the file “lv_conf.h”
+Download the latest LilyGO T-Display S3 zip from GitHub.
+Expand LilyGO’s zip file and…
+Drag the folder called "T-Display-S3-main” into your libraries folder.
+Inside the folder T-Display-S3-main there is a folder called “lib”.
+Copy the CONTENTS of the folder “lib” (not the actual folder “lib”)  into your libraries folder and then check that “lib” is empty and delete it.
+
+Your libraries folder should now contain folders called:
+lvgl
+T-Display-S3-main
+TFT_eSPI
+and a file called
+lv_conf.h
+
 
 Do Not do an "Arduino Libraries Update" to the "TFT_eSPI" library that you just unzipped and 
-Do Not use the standard "TFT_eSPI" Arduino library! 
-The "Standard" TFT_eSPI library does not work with LilyGO T-Display S3 ! 
-Resist the urge to update this file.
+Do Not use the standard "TFT_eSPI" Arduino library! (Arduino has yet to provide ver 2.5.0)
+The "Standard" TFT_eSPI library does not work with LilyGO T-Display S3 ! (at this time, but it's coming)
+Resist the urge to update this file!
 
 Now:
 Step 1, below, requires that you have already installed the ESP32 board definitions and
