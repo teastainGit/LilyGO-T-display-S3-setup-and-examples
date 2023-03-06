@@ -7,7 +7,8 @@ Download the latest LilyGO T-Display S3 zip from GitHub.
 Expand LilyGO’s zip file and…
 Drag the folder called "T-Display-S3-main” into your libraries folder.
 Inside the folder T-Display-S3-main there is a folder called “lib”.
-Copy the CONTENTS of the folder “lib” (not the actual folder “lib”)  into your libraries folder and then check that “lib” is empty and delete it.
+Copy the CONTENTS of the folder “lib” (not the actual folder “lib”)  into your libraries folder and then check
+that “lib” is empty and delete it.
 Your libraries folder should now contain folders called:
 lvgl
 T-Display-S3-main
@@ -50,8 +51,8 @@ The first one to try is "HotHead.ino" which demos most of the common things you 
 Step 1) Include an image (My hothead.h logo needs to be in the same folder as each sketch).
 Step 2) Demonstrate the very high speed graphics made possible by an old school 8 bit 
 parallel interface to the LCD instead of SPI or I2C. (A 50 year old concept, lost and forgotten.)
-Step 3) The left button (marked "BOT" beside the USB connector) changes the highlighting of the rectangle text showing
-"left pin 0" to now show "LEFT" 
+Step 3) The left button (marked "BOT" beside the USB connector) changes the highlighting of the rectangle
+text showing "left pin 0" to now show "LEFT" 
 (and right button marked "KEY”… highlights the right).
 
 Open the code and read and understand it and you're good to go. 
@@ -91,9 +92,12 @@ C) Can run on USB power but not battery connector:
 	(LilyGO variously refers to them as "LCD power on" OR "PIN_POWER_ON")
 	Thanks to user RobLatour for finding this cure for the battery issue!
 	
-D) In the Port Selection, if the USB flickers on and off and you cannot upload, you may have to manually enter "Upload Mode".
-	This can be caused by a faulty sketch that is running at high speed with no delay at the end of the loop, or working with Dual     	  Cores.
- 	To enter Upload Mode press Boot and hold, press reset and release, then release Boot and go it into "Upload Mode"
+D) In the Port Selection, if the USB flickers on and off and you cannot upload, you may have to 
+	manually enter "Upload Mode".
+	This can be caused by a faulty sketch that is running at high speed with no delay at the 
+	end of the loop, or working with Dual Cores.
+ 	To enter Upload Mode:
+	press Boot and hold, press reset and release, then release Boot and go it into "Upload Mode"
 
 You got here!
 Addendum: 
