@@ -91,8 +91,8 @@ C) Can run on USB power but not battery connector:
 	(LilyGO variously refers to them as "LCD power on" OR "PIN_POWER_ON")
 	Thanks to user RobLatour for finding this cure for the battery issue!
 	
-D) In the Port Selection, if the USB flickers on and off and you cannot upload, You may have to manually enter "Upload Mode".
-	This can be caused by a faulty sketch that is running at high speed with nodelay at the end of the loop, or working with Dual     	  Cores.
+D) In the Port Selection, if the USB flickers on and off and you cannot upload, you may have to manually enter "Upload Mode".
+	This can be caused by a faulty sketch that is running at high speed with no delay at the end of the loop, or working with Dual     	  Cores.
  	To enter Upload Mode press Boot and hold, press reset and release, then release Boot and go it into "Upload Mode"
 
 You got here!
