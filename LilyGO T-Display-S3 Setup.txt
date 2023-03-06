@@ -1,9 +1,6 @@
-
 You need to download the Zip file from LilyGO's own GitHub:
-
 https://github.com/Xinyuan-LilyGO/T-Display-S3
-
-by pressing the green button "Code" and after downloading, expand the Zip,
+by pressing the green button "Code" and after downloading, expand the Zip.
 
 In your libraries delete folders “TFT_eSPI" and ‘lvgl" and delete the file “lv_conf.h”
 Download the latest LilyGO T-Display S3 zip from GitHub.
@@ -11,14 +8,12 @@ Expand LilyGO’s zip file and…
 Drag the folder called "T-Display-S3-main” into your libraries folder.
 Inside the folder T-Display-S3-main there is a folder called “lib”.
 Copy the CONTENTS of the folder “lib” (not the actual folder “lib”)  into your libraries folder and then check that “lib” is empty and delete it.
-
 Your libraries folder should now contain folders called:
 lvgl
 T-Display-S3-main
 TFT_eSPI
 and a file called
 lv_conf.h
-
 
 Do Not do an "Arduino Libraries Update" to the "TFT_eSPI" library that you just unzipped and 
 Do Not use the standard "TFT_eSPI" Arduino library! (Arduino has yet to provide ver 2.5.0)
@@ -53,17 +48,14 @@ My repository contains two examples of simple documented easy to understand prog
 The first one to try is "HotHead.ino" which demos most of the common things you need to program this board:
 
 Step 1) Include an image (My hothead.h logo needs to be in the same folder as each sketch).
-
 Step 2) Demonstrate the very high speed graphics made possible by an old school 8 bit 
 parallel interface to the LCD instead of SPI or I2C. (A 50 year old concept, lost and forgotten.)
-
 Step 3) The left button (marked "BOT" beside the USB connector) changes the highlighting of the rectangle text showing
 "left pin 0" to now show "LEFT" 
 (and right button marked "KEY”… highlights the right).
 
 Open the code and read and understand it and you're good to go. 
 Try pushing both buttons at once!
-
 The rest of the code is simple and helps you make your own programs.
 The second program is: "HotHead_temp_sensor.ino" which just substitutes
 a I2C temperature sensor in place of the progress bar.
@@ -78,7 +70,7 @@ Solutions to common startup issues:
 A) Unit seems "bricked" 1
    LCD does not display, unit remains dark with no white backlight:
 În declarations add 
-      #define PIN_POWER_ON 15  // LCD and battery Power Enable
+        #define PIN_POWER_ON 15  // LCD and battery Power Enable
 	#define PIN_LCD_BL 38    // BackLight enable pin (see Dimming.txt)
 Then in setup add
 	pinMode(PIN_POWER_ON, OUTPUT); 	
@@ -99,6 +91,10 @@ C) Can run on USB power but not battery connector:
 	(LilyGO variously refers to them as "LCD power on" OR "PIN_POWER_ON")
 	Thanks to user RobLatour for finding this cure for the battery issue!
 	
+D) In the Port Selection, if the USB flickers on and off and you cannot upload, You may have to manually enter "Upload Mode".
+	This can be caused by a faulty sketch that is running at high speed with nodelay at the end of the loop, or working with Dual     	  Cores.
+ 	To enter Upload Mode press Boot and hold, press reset and release, then release Boot and go it into "Upload Mode"
+
 You got here!
 Addendum: 
 <on-board LED colours and function:>
@@ -108,7 +104,8 @@ Addendum:
 The T-Display S3 LCD backlight can be dimmed by following the instructions in:
 LCD Dimmer.txt in this repository or try the HotHead_Dimmer example.
 
-Due to the complicated specifics of the Arduino download settings all examples now include setup.h in the .ino folder for convenience. While setting up the multiple config settings, you can glance at the included list!
+In the Arduino download settings of your IDE I added a textcalled "setup.h" in the .ino folder for convenience. 
+While setting up the multiple config settings, you can glance at the included list!
 
 You can email me at teastain@me.com
 I'm open to suggestions!
