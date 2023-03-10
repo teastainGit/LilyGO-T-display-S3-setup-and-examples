@@ -98,6 +98,12 @@ D) In the Port Selection, if the USB flickers on and off and you cannot upload, 
 	end of the loop, or working with Dual Cores.
  	To enter Upload Mode:
 	press Boot and hold, press reset and release, then release Boot and go it into "Upload Mode"
+	
+E) When the board is shipped, the "factory.ino" sketch is calling for ESPTouch which is an app from 
+	Espressif to transfer your WiFi SSID and Password from your phone to the board and enable the
+	board to go online to China. This will enable a cool clock app that has a digital flip card 
+	style of retro alarm clock. 
+	You can bypass ESPTouch by editing the pin_config.h in the "factory" folder with your SSID and Password.
 
 You got here!
 Addendum: 
