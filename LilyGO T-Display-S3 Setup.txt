@@ -40,10 +40,17 @@ To enable serial monitor function for debugging, etc, be sure to also set
 USB CDC On Boot "Enabled".
 All settings shown, run on my computer just as shown.
 
-(if you are NOT running one of my sketches, you should add:
-#define LCDpin 15			 just before the setup and then in setup add:
-pinMode(LCDpin, OUTPUT); 	//"triggers the LCD backlight,
-digitalWrite(LCDpin, HIGH);	//on startup"
+If you are NOT running one of my sketches, you should add:
+
+  #define PIN_POWER_ON 15  // LCD and battery Power Enable
+  #define PIN_LCD_BL 38    // BackLight enable pin (see Dimming.txt)
+just before the setup and then in setup add:
+
+  pinMode(PIN_POWER_ON, OUTPUT);  //triggers the LCD backlight
+  pinMode(PIN_LCD_BL, OUTPUT);    // BackLight enable pin
+  
+  digitalWrite(PIN_POWER_ON, HIGH);
+  digitalWrite(PIN_LCD_BL, HIGH);
 
 My repository contains two examples of simple documented easy to understand program code. 
 The first one to try is "HotHead.ino" which demos most of the common things you need to program this board:
