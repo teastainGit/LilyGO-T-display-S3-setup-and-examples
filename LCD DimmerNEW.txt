@@ -1,0 +1,21 @@
+LCD Backlight LED Dimmer Circuit and Code
+How to adjust the LCD backlight:
+The Schematic:
+(See T_Display_S3shematic.png)
+says that GPIO38 is ESP_LCD_BLK, which can be pulsed to enable the clever chip "AW9364DNR" to dim the four LCD LED backlights (LEDK1 ~ 4) here:
+(See LCD_Dimmer.png)
+Using the upper left button you can control the display brightness, by pushing on and off or continuously to dim the display.
+Once at the dimmest it will return to full brightness.
+Add this code to your Arduino Sketch:
+
+Setup:
+    pinMode(PIN_LCD_BL, OUTPUT);    //controls the LCD backlight
+    pinMode(topbutton, INPUT);    //Left button  pulled up, push = 0
+
+Loop
+if (!digitalRead(topbutton)) {  //pressed is off
+    digitalWrite(PIN_LCD_BL, LOW);
+    delayMicroseconds(200);
+    digitalWrite(PIN_LCD_BL, HIGH);
+  }
+  delay(200);
