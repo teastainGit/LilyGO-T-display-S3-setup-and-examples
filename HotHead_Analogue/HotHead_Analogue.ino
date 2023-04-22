@@ -5,9 +5,11 @@ TFT_eSPI tft = TFT_eSPI();
 #define topbutton 0
 #define PIN_POWER_ON 15
 #define PIN_LCD_BL 38
-#define analogPin 4
-float val = 1.23;
-
+#define analogPin 4. //for internal battery voltage monitor
+// for external measurements use a voltage divider
+// will require calibration and scaling!
+float val = 1.23; //my default value for sanity check
+float scaling = 0.0017; // to read voltage on USB as 5.00
 void setup() {
   pinMode(PIN_POWER_ON, OUTPUT);  //enables battery power and LCD backlight
   pinMode(PIN_LCD_BL, OUTPUT);    //controls the LCD backlight
@@ -34,12 +36,12 @@ void setup() {
 
 void loop() {
   val = analogRead(analogPin);  // read the input pin
-  Serial.println(val/1000);          // debug value
+  Serial.println(val*scaling); //must use a voltage divider and calibrated    
   tft.setTextFont(2);
   tft.setTextSize(2);
   tft.setTextColor(TFT_RED, TFT_BLACK);
-  tft.setCursor(30, 110);  //last argument is font scale
-  tft.print(val/1000);
+  tft.setCursor(30, 110);  
+  tft.print(val*scaling);  //must use a voltage divider and be calibrated   
   tft.setTextSize(1);
   tft.println(" VDC");
   delay(1000);
