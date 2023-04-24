@@ -5,17 +5,16 @@
 #define topbutton 0
 #define PIN_POWER_ON 15  // LCD and battery Power Enable !
 #define PIN_LCD_BL 38    // BackLight enable pin
-//Adress of other ESP board
-//which is MAC: 94:b9:7e:8c:7c:e8 I call "EAC"
-//                          MAC: 94:   b9:   7e:  8c:    b9:   7c
-uint8_t broadcastAddress[] = { 0x94, 0xB9, 0x7E, 0x8C, 0xB9, 0x7C };
+
+//Address of OTHER board         68:   b6:   b3:   21:   63:   18
+uint8_t broadcastAddress[] = { 0x68, 0xB6, 0xB3, 0x21, 0x63, 0x18 };//of OTHER
 String success;
 //Structure example to send data
 //Must match the receiver structure  Button.State
 //example "digitalWrite (LED, RxButton.State);"
 //example "TxButton.State = !M5.BtnA.wasPressed();"
 typedef struct struct_message {
-  bool State;
+  bool State;     //I chose bool for simplicity, it can be any variable type!
 } struct_message;
 
 // Create a struct_message to hold outgoing button
@@ -27,7 +26,6 @@ struct_message RxButton;  //I.E. = incomingReadings
 esp_now_peer_info_t peerInfo;
 
 void setup() {
-
   pinMode(PIN_POWER_ON, OUTPUT);  //triggers the LCD backlight if you add graphics!
   pinMode(PIN_LCD_BL, OUTPUT);    // BackLight enable pin if you add graphics!
   pinMode(topbutton, INPUT);      //Left button  pulled up, push = 0
@@ -62,11 +60,10 @@ void setup() {
 }
 
 void loop() {
-
   TxButton.State = digitalRead(topbutton);  //***this is where you tramsmit this units button state
   esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *)&TxButton, sizeof(TxButton));
   if (result == ESP_OK) {
-    //Serial.println("Sent with success");
+    //Serial.println("Sent with success");  //un-comment for debugging!
   } else {
     Serial.println("Error sending the data");
   }
@@ -76,14 +73,14 @@ void loop() {
 // OnDataRecv when data is received, LED is controlled here
 void OnDataRecv(const uint8_t *mac, const uint8_t *incomingData, int len) {
   memcpy(&RxButton, incomingData, sizeof(RxButton));
-  //Serial.print("Bytes received: ");
+  //Serial.print("Bytes received: ");   //un-comment for debugging!
   //Serial.println(len);
   Serial.print("RxButton.State=");
   Serial.println(RxButton.State);
 }
 
 void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
-  //Serial.print("\r\nA- Last Packet Send Status:\t");
+  //Serial.print("\r\nA- Last Packet Send Status:\t");   //un-comment for debugging!
   //Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Fail");
   if (status == 0) {
     success = "Delivery Success :)";
