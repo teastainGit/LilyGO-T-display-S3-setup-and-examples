@@ -75,12 +75,12 @@ with the sketch. This also helps you understand how I2C works!!!
 
 
 Solutions to common startup issues:
-A) Unit seems "bricked" 1
+A) Unit seems "bricked" 
    LCD does not display, unit remains dark with no white backlight:
-În declarations add 
-        #define PIN_POWER_ON 15  // LCD and battery Power Enable
+	In declarations add 
+      #define PIN_POWER_ON 15  // LCD and battery Power Enable
 	#define PIN_LCD_BL 38    // BackLight enable pin (see Dimming.txt)
-Then in setup add
+	Then in setup add
 	pinMode(PIN_POWER_ON, OUTPUT); 	
 	pinMode(PIN_LCD_BL, OUTPUT); 	
 	digitalWrite(PIN_POWER_ON, HIGH);)	
@@ -92,7 +92,8 @@ B) Cannot see Serial.Print on Arduino Serial Monitor
 	in the Arduino board parameters
 
 C) Can run on USB power but not battery connector:
-	Add #define PIN_POWER_ON 15		// just before the setup and then in setup add:
+	In declarations add
+	#define PIN_POWER_ON 15		// just before the setup and then in setup add:
 	pinMode(PIN_POWER_ON, OUTPUT); 	//"triggers the LCD backlight, and enables battery power
 	digitalWrite(PIN_POWER_ON, HIGH);)	//on startup"
 	
@@ -110,7 +111,7 @@ E) When the board is shipped, the "factory.ino" sketch is calling for ESPTouch w
 	Espressif to transfer your WiFi SSID and Password from your phone to the board and enable the
 	board to go online to China. This will enable a cool clock app that has a digital flip card 
 	style of retro alarm clock. 
-	You can bypass ESPTouch by editing the pin_config.h in the "factory" folder with your SSID and Password.
+	You can bypass ESPTouch by editing the pin_config.h in the "factory" folder with your SSID and 		Password.
 
 You got here!
 Addendum: 
@@ -121,7 +122,7 @@ Addendum:
 The T-Display S3 LCD backlight can be dimmed by following the instructions in:
 LCD DimmerNEW.txt in this repository or try the HotHead_DimmerNEW example.
 
-In the Arduino download settings of your IDE I added a textcalled "setup.h" in the .ino folder for convenience. 
+In the Arduino download settings of your IDE I added a text called "setup.h" in the .ino folder for convenience. 
 While setting up the multiple config settings, you can glance at the included list!
 
 You can email me at teastain@me.com
