@@ -78,7 +78,7 @@ Solutions to common startup issues:
 A) Unit seems "bricked" 
    LCD does not display, unit remains dark with no white backlight:
 	In declarations add 
-      #define PIN_POWER_ON 15  // LCD and battery Power Enable
+        #define PIN_POWER_ON 15  // LCD and battery Power Enable
 	#define PIN_LCD_BL 38    // BackLight enable pin (see Dimming.txt)
 	Then in setup add
 	pinMode(PIN_POWER_ON, OUTPUT); 	
