@@ -4,7 +4,7 @@
 #include <WiFi.h>
 #define topbutton 0
 #define PIN_POWER_ON 15  // LCD and battery Power Enable !
-#define PIN_LCD_BL 38    // BackLight enable pin
+#define PIN_LCD_BL 38    // BackLight enable pin if you add graphics later
 
 //Address of OTHER board         68:   b6:   b3:   21:   63:   18
 uint8_t broadcastAddress[] = { 0x68, 0xB6, 0xB3, 0x21, 0x63, 0x18 };//of OTHER
@@ -26,7 +26,7 @@ struct_message RxButton;  //I.E. = incomingReadings
 esp_now_peer_info_t peerInfo;
 
 void setup() {
-  pinMode(PIN_POWER_ON, OUTPUT);  //triggers the LCD backlight if you add graphics!
+  pinMode(PIN_POWER_ON, OUTPUT);  //triggers the LCD backlight and enables battery
   pinMode(PIN_LCD_BL, OUTPUT);    // BackLight enable pin if you add graphics!
   pinMode(topbutton, INPUT);      //Left button  pulled up, push = 0
   delay(100);
