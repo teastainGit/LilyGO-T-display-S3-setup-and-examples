@@ -1,3 +1,8 @@
+//This sketch is an example of reading a SHTx series temp/humidity sensor
+//using i2c
+//There is no library required because the communication code is in-line
+//with the main loop
+//this sensor is sold under the name ENV by M5Stack
 #include <Wire.h>
 #include "TFT_eSPI.h"
 #include "hothead.h"
