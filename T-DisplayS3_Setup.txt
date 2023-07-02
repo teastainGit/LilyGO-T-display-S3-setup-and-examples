@@ -18,8 +18,9 @@ lv_conf.h
 *******
 Update:
 Due to rancour on the LilyGO T-Display S3 GitHub Issues section regarding not being able to update the TFT_eSPI without losing the display, Bodmer was approached and finally made the board work with the standard version TFT_eSPI GitHub AND be updatable in Arduino IDE. The main issue was that LilyGO used a more exotic 8bit parallel interface, rather that SPI.
-You may now do an "Arduino Libraries Update" to the "TFT_eSPI" library and 
- use the standard "TFT_eSPI" library from Bodmer! 
+You may now do an "Arduino Libraries Update" to the "TFT_eSPI" library but make sure the Arduino version is "version=2.5.x” (the current version is version=2.5.30).
+Or you may  use the standard "TFT_eSPI" library from Bodmer! 
+But...
 If you do an update you will have to edit the "User_Setup_Select.h" to comment-out the line:
 
 "//#include <User_Setup.h> // Default setup is root library folder"
@@ -32,7 +33,7 @@ which is about halfway down the huge file of setups.
 This way you can safely "keep current" without fear.
 Both ways work: You can use the LilyGO supplied TFT_eSPI which does not require editing the User Setup OR:
 Download the latest update and edit the "User_Setup_Select.h", your choice!
-(You will find an edited copy here in may repository)
+(You will find an edited copy of "User_Setup_Select.h" here in may repository)
 
 Now:
 Step 1, below, requires that you have already installed the ESP32 board definitions and
