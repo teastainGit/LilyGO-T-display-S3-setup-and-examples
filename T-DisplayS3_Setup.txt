@@ -18,8 +18,13 @@ lv_conf.h
 *******
 Update:
 Due to rancour on the LilyGO T-Display S3 GitHub Issues section regarding not 
-being able to update the TFT_eSPI without losing the display, Bodmer was approached and finally made the board work with the standard version TFT_eSPI GitHub AND be updatable in Arduino IDE. The main issue was that LilyGO used a more exotic 8bit parallel interface, rather that SPI.
-You may now do an "Arduino Libraries Update" to the "TFT_eSPI" library but make sure the Arduino version is "version=2.5.x” (the current version as of July2, 2023 is version=2.5.30).
+being able to update the TFT_eSPI without losing the display. 
+Bodmer was approached and finally made the board work with the standard version 
+TFT_eSPI GitHub AND be updatable in Arduino IDE. The main issue was that LilyGO 
+used a more exotic 8bit parallel interface, rather that SPI.
+You may now do an "Arduino Libraries Update" to the "TFT_eSPI" library but make 
+sure the Arduino version is "version=2.5.x” 
+(the current version as of July2, 2023 is version=2.5.30).
 Or you may  use the standard "TFT_eSPI" library from Bodmer! 
 But...
 If you do an update you will have to edit the "User_Setup_Select.h" to comment-out the line:
@@ -32,14 +37,18 @@ and un-comment:
 
 which is about halfway down the huge file of setups.
 This way you can safely "keep current" without fear.
-Both ways work: You can use the LilyGO supplied TFT_eSPI which does not require editing the User Setup OR:
+Both ways work: You can use the LilyGO supplied TFT_eSPI which does not require
+editing the User Setup OR:
 Download the latest update and edit the "User_Setup_Select.h", your choice!
 (You will find an edited copy of "User_Setup_Select.h" here in may repository)
 
 Now:
-Step 1, below, requires that you have already installed the ESP32 board definitions and are using the latest version (I use ver 2.0.6 - 2.0.9.). It is also assumed that you have installed Arduino IDE, ver 1 or 2.
+Step 1, below, requires that you have already installed the ESP32 board 
+definitions and are using the latest version (I use ver 2.0.6 - 2.0.9.). 
+It is also assumed that you have installed Arduino IDE, ver 1 or 2.
 (This is covered in many tutorials online, so I will be brief)
-If your Arduino IDE does not already have "ESP32 Arduino" (or simply esp32) as shown paste this:
+If your Arduino IDE does not already have "ESP32 Arduino" (or simply esp32) 
+as shown paste this:
 https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
 into Arduino Preferences, Additional Boards Manager.
 Goto Boards manager and select esp32 by Espressif Systems, ver 2.0.6 and wait for it to load...
