@@ -100,8 +100,9 @@ with the sketch. This also helps you understand how I2C works!!!
 
 
 Solutions to common startup issues:
+
 A) Unit seems "bricked" 
-   LCD does not display, unit remains dark with no white backlight:
+   	LCD does not display, unit remains dark with no white backlight:
 	In declarations add 
         #define PIN_POWER_ON 15  // LCD and battery Power Enable
 	#define PIN_LCD_BL 38    // BackLight enable pin (see Dimming.txt)
@@ -126,29 +127,29 @@ C) Can run on USB power but not battery connector:
 	Thanks to user RobLatour for finding this cure for the battery issue!
 	
 D) In the Port Selection, if the USB flickers on and off and you cannot upload, you may have to 
-	manually enter "Upload Mode".
+	manually enter "Upload Mode". (Sometimes call Download Mode)
 	This can be caused by a faulty sketch that is running at high speed with no delay at the 
 	end of the loop, or working with Dual Cores.
  	To enter Upload Mode:
 	press Boot and hold, press reset and release, then release Boot and go it into "Upload Mode"
+	(Alternately: Unplug the USB, hold down the Boot button whilst re-connecting USB. You are now in 	Upload Mode.)
+	I am using Arduino IDE 2.1.1 on a iMac M1 and almost never have to to this, except if I 		experience difficulties connecting.
 	
 E) When the board is shipped, the "factory.ino" sketch is calling for ESPTouch which is an app from 
 	Espressif to transfer your WiFi SSID and Password from your phone to the board and enable the
 	board to go online to China. This will enable a cool clock app that has a digital flip card 
 	style of retro alarm clock. 
 	You can bypass ESPTouch by editing the pin_config.h in the "factory" folder with your SSID and
-	Password.
+	Password. The factory.ino sketch has no other purpose and is sometimes difficult to load...so 	don't worry about it!
 F) Even after uploading the HotHead sketch you get no image on the LCD, just black or white background, 
 	but you can see the Tick/Tock in Serial Monitor:
 	You may not have copied ALL the files from the LilyGO repository and fully replaced the ones in
 	your Libraries folder or you did NOT resist the temptation to do an Arduino Library Update!
-	The current Arduino Library for TFT_eSPI is now Bodmer's official v2.5 but there are still setups to do.
+	The current Arduino Library for TFT_eSPI is now Bodmer's official v2.5 but there are still setups to do. (See above)
 	
 Pro-Tip:
-	If you have several different boards using TFT_eSPI library and you have installed V2.5 in your libraries
-	you still need to find "User_Setup_Select.h" file and select the LilyGO T-Display S3 halfway down by
-	un-commenting it and no others. (At the top of the file there is a reference to
-	User_Setup.h that needs to be commented-out.
+	If you have several different boards using TFT_eSPI library and you have installed V2.5 in your 	libraries you still need to find "User_Setup_Select.h" file and select the LilyGO T-Display S3 	halfway down by un-commenting it and no others. 
+	(At the top of the file there is a reference to User_Setup.h that needs to be commented-out.
 
 You got here!
 Addendum: 
