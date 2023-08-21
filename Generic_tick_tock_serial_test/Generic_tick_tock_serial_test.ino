@@ -1,15 +1,16 @@
-bool ticktock = true;
+//words preceded by "//"" are comments and are not executed
+bool ticktock; //declare ticktock as a boolean flag
 
-void setup() {
-Serial.begin (115200);
+void setup() {          //runs once on start up
+Serial.begin (115200); //open the serial port for USB cable
 }
 
-void loop() {
-ticktock = !ticktock;
-  if (ticktock) {
+void loop() {         //runs in circles!
+ticktock = !ticktock; //every pass through reverse the flag
+  if (ticktock) {     //test current value of the ticktock flag
     Serial.println("tick");  
-  } else {
+  } else {             //prints one or the other to the USB port
     Serial.println("tock");
   }
-delay (1000);
+delay (1000);           //wait for a second and run again!
 }

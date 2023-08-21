@@ -4,8 +4,9 @@ by pressing the green button "Code" and after downloading, expand the Zip.
 
 In your libraries delete folders “TFT_eSPI" and ‘lvgl" and delete the file “lv_conf.h”
 Download the latest LilyGO T-Display S3 zip from GitHub.
+(It will not install by using the old Sketch pulldown called "Include Library> Add .ZIP Library, as the ZIP file is not a Library ZIP, but a Product Download that contains other things such as Examples, libraries and documentation. )
 Expand LilyGO’s zip file and…
-Drag the folder called "T-Display-S3-main” into your libraries folder.
+Drag the folder called "T-Display-S3-main” into your Arduino folder.
 Inside the folder T-Display-S3-main there is a folder called “lib”.
 Copy the CONTENTS of the folder “lib” (not the actual folder “lib”)  into your 
 libraries folder and then check that “lib” is empty and delete it.
@@ -15,6 +16,7 @@ T-Display-S3-main
 TFT_eSPI
 and a file called
 lv_conf.h
+...and recently, many other helpful dependancies.
 *******
 Update:
 Due to rancour on the LilyGO T-Display S3 GitHub Issues section regarding not 
@@ -27,11 +29,11 @@ sure the Arduino version is "version=2.5.x”
 (the current version as of July2, 2023 is version=2.5.30).
 Or you may  use the standard "TFT_eSPI" library from Bodmer! 
 But...
-If you do an update you will have to edit the "User_Setup_Select.h" to comment-out the line:
+If you do an update you WILL have to edit the "User_Setup_Select.h" to comment-out the line:
 
 "//#include <User_Setup.h> // Default setup is root library folder"
 
-and un-comment:
+AND un-comment:
 
 "#include <User_Setups/Setup206_LilyGo_T_Display_S3.h> // For the LilyGo T-Display S3 based ESP32S3 with ST7789 170 x 320 TFT"
 
@@ -44,14 +46,14 @@ Download the latest update and edit the "User_Setup_Select.h", your choice!
 
 Now:
 Step 1, below, requires that you have already installed the ESP32 board 
-definitions and are using the latest version (I use ver 2.0.6 - 2.0.9.). 
+definitions and are using the latest version (I use ver 2.0.11). 
 It is also assumed that you have installed Arduino IDE, ver 1 or 2.
 (This is covered in many tutorials online, so I will be brief)
 If your Arduino IDE does not already have "ESP32 Arduino" (or simply esp32) 
 as shown paste this:
 https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
 into Arduino Preferences, Additional Boards Manager.
-Goto Boards manager and select esp32 by Espressif Systems, ver 2.0.6 and wait for it to load...
+Goto Boards manager and select esp32 by Espressif Systems, ver 2.0.11 and wait for it to load...
 From the upper menu "Arduino Tools", Board: select ESP32 Arduino, ESP32S3 Dev Module. Right at the top!
 Please see attached screenshot, "Arduino_Config.png"
 Make sure that you change:
