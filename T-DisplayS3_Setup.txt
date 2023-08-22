@@ -86,8 +86,7 @@ The first one to try is "HotHead.ino" which demos most of the common things you 
 Step 1) Include an image (My hothead.h logo needs to be in the same folder as each sketch).
 Step 2) Demonstrate the very high speed graphics made possible by an old school 8 bit 
 parallel interface to the LCD instead of SPI or I2C. (A 50 year old concept, lost and forgotten.)
-Step 3) The left button (marked "BOT" beside the USB connector) changes the highlighting of the rectangle
-text showing "left pin 0" to now show "LEFT" 
+Step 3) The left button (marked "BOT" beside the USB connector) changes the highlighting of the rectangle text showing "left pin 0" to now show "LEFT" 
 (and right button marked "KEY”… highlights the right).
 
 Open the code and read and understand it and you're good to go. 
@@ -135,6 +134,7 @@ D) In the Port Selection, if the USB flickers on and off and you cannot upload, 
 	end of the loop, or working with Dual Cores.
  	To enter Upload Mode:
 	press Boot and hold, press reset and release, then release Boot and go it into "Upload Mode"
+	(The reset button is the little black switch beside the Boot button, on the back of the board)
 	(Alternately: Unplug the USB, hold down the Boot button whilst re-connecting USB. You are now in 
 	Upload Mode.)
 	I am using Arduino IDE 2.1.1 on a iMac M1 and almost never have to to this, except if I
