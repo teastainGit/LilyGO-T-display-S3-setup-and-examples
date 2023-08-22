@@ -136,6 +136,8 @@ D) In the Port Selection, if the USB flickers on and off and you cannot upload, 
 	Upload Mode.)
 	I am using Arduino IDE 2.1.1 on a iMac M1 and almost never have to to this, except if I
 	experience difficulties connecting.
+	If the upload goes smoothly but the sketch does not run, i.e. no serial print or screen it is 
+	sometimes necessary to unplug the USB and plug it back in...to start the new code!
 	
 E) When the board is shipped, the "factory.ino" sketch is calling for ESPTouch which is an app from 
 	Espressif to transfer your WiFi SSID and Password from your phone to the board and enable the
