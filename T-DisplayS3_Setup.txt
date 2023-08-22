@@ -4,7 +4,9 @@ by pressing the green button "Code" and after downloading, expand the Zip.
 
 In your libraries delete folders “TFT_eSPI" and ‘lvgl" and delete the file “lv_conf.h”
 Download the latest LilyGO T-Display S3 zip from GitHub.
-(It will not install by using the old Sketch pulldown called "Include Library> Add .ZIP Library, as the ZIP file is not a Library ZIP, but a Product Download that contains other things such as Examples, libraries and documentation. )
+(It will not install by using the old Sketch pulldown called "Include Library> Add .ZIP Library,
+as the ZIP file is not a Library ZIP, but a Product Download that contains other things such
+as Examples, libraries and documentation. )
 Expand LilyGO’s zip file and…
 Drag the folder called "T-Display-S3-main” into your Arduino folder.
 Inside the folder T-Display-S3-main there is a folder called “lib”.
@@ -54,7 +56,8 @@ as shown paste this:
 https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
 into Arduino Preferences, Additional Boards Manager.
 Goto Boards manager and select esp32 by Espressif Systems, ver 2.0.11 and wait for it to load...
-From the upper menu "Arduino Tools", Board: select ESP32 Arduino, ESP32S3 Dev Module. Right at the top!
+From the upper menu "Arduino Tools", Board: select ESP32 Arduino, ESP32S3 Dev Module. 
+Right at the top!
 Please see attached screenshot, "Arduino_Config.png"
 Make sure that you change:
 Flash Size to 16M
@@ -146,15 +149,18 @@ E) When the board is shipped, the "factory.ino" sketch is calling for ESPTouch w
 	You can bypass ESPTouch by editing the pin_config.h in the "factory" folder with your SSID and
 	Password. The factory.ino sketch has no other purpose and is sometimes difficult to load...so
 	don't worry about it!
+
 F) Even after uploading the HotHead sketch you get no image on the LCD, just black or white background, 
 	but you can see the Tick/Tock in Serial Monitor:
 	You may not have copied ALL the files from the LilyGO repository and fully replaced the ones in
 	your Libraries folder or you did NOT resist the temptation to do an Arduino Library Update!
-	The current Arduino Library for TFT_eSPI is now Bodmer's official v2.5 but there are still setups to do. (See above)
+	The current Arduino Library for TFT_eSPI is now Bodmer's official v2.5 but there are still setups to do. 
+	(See above)
 	
 Pro-Tip:
 	If you have several different boards using TFT_eSPI library and you have installed V2.5 in your	libraries you 
-	still need to find "User_Setup_Select.h" file and select the LilyGO T-Display S3 halfway down by un-commenting it and no others. 
+	still need to find "User_Setup_Select.h" file and select the LilyGO T-Display S3 halfway down by 
+	un-commenting it and no others. 
 	(At the top of the file there is a reference to User_Setup.h that needs to be commented-out.
 
 You got here!
