@@ -109,10 +109,10 @@ A) Unit seems "bricked"
 		#define PIN_POWER_ON 15  // LCD and battery Power Enable
 		#define PIN_LCD_BL 38    // BackLight enable pin (see Dimming.txt)
 	Then in setup add
-	pinMode(PIN_POWER_ON, OUTPUT); 	
-	pinMode(PIN_LCD_BL, OUTPUT); 	
-	digitalWrite(PIN_POWER_ON, HIGH);)	
-	digitalWrite(PIN_LCD_BL, HIGH);)	
+		pinMode(PIN_POWER_ON, OUTPUT); 	
+		pinMode(PIN_LCD_BL, OUTPUT); 	
+		digitalWrite(PIN_POWER_ON, HIGH);)	
+		digitalWrite(PIN_LCD_BL, HIGH);)	
 
 B) Cannot see Serial.Print on Arduino Serial Monitor
 	To enable serial monitor function for debugging, you must also set 
