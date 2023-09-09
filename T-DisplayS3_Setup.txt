@@ -106,8 +106,8 @@ Solutions to common startup issues:
 A) Unit seems "bricked" 
    	LCD does not display, unit remains dark with no white backlight:
 	In declarations add 
-        #define PIN_POWER_ON 15  // LCD and battery Power Enable
-	#define PIN_LCD_BL 38    // BackLight enable pin (see Dimming.txt)
+		#define PIN_POWER_ON 15  // LCD and battery Power Enable
+		#define PIN_LCD_BL 38    // BackLight enable pin (see Dimming.txt)
 	Then in setup add
 	pinMode(PIN_POWER_ON, OUTPUT); 	
 	pinMode(PIN_LCD_BL, OUTPUT); 	
@@ -158,8 +158,8 @@ F) Even after uploading the HotHead sketch you get no image on the LCD, just bla
 	(See above)
 	
 Pro-Tip:
-	If you have several different boards using TFT_eSPI library and you have installed V2.5 in your	libraries you 
-	still need to find "User_Setup_Select.h" file and select the LilyGO T-Display S3 halfway down by 
+	If you have several different boards using TFT_eSPI library and you have installed V2.5 in your
+	libraries you still need to find "User_Setup_Select.h" file and select the LilyGO T-Display S3 halfway down by 
 	un-commenting it and no others. 
 	(At the top of the file there is a reference to User_Setup.h that needs to be commented-out.
 
