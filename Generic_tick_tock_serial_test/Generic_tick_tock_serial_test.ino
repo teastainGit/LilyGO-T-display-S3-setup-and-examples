@@ -2,6 +2,9 @@
 bool ticktock; //declare ticktock as a boolean flag
 
 void setup() {          //runs once on start up
+pinMode(15, OUTPUT); 
+delay (500); 
+digitalWrite(15, HIGH);
 Serial.begin (115200); //open the serial port for USB cable
 }
 

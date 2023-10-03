@@ -17,7 +17,7 @@ TFT_eSprite sprite = TFT_eSprite(&tft);
 
 void setup() {
 
-  pinMode(PIN_POWER_ON, OUTPUT);  //triggers the LCD backlight
+  pinMode(PIN_POWER_ON, OUTPUT);  //enables the LCD and to run on battery
   pinMode(PIN_LCD_BL, OUTPUT);  //triggers the LCD backlight
   digitalWrite(PIN_POWER_ON, HIGH);
   digitalWrite(PIN_LCD_BL, HIGH);

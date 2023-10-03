@@ -26,7 +26,7 @@ struct_message RxButton;  //I.E. = incomingReadings
 esp_now_peer_info_t peerInfo;
 
 void setup() {
-  pinMode(PIN_POWER_ON, OUTPUT);  //triggers the LCD backlight and enables battery
+  pinMode(PIN_POWER_ON, OUTPUT);  ////enables the LCD and to run on battery
   pinMode(PIN_LCD_BL, OUTPUT);    // BackLight enable pin if you add graphics!
   pinMode(topbutton, INPUT);      //Left button  pulled up, push = 0
   delay(100);

@@ -15,7 +15,7 @@ bool ticktock = true;
 
 void setup() {
 
-  pinMode(PIN_POWER_ON, OUTPUT);  //triggers the LCD backlight
+  pinMode(PIN_POWER_ON, OUTPUT);  //enables the LCD and to run on battery
   pinMode(PIN_LCD_BL, OUTPUT);    // BackLight enable pin
   pinMode(lowerbutton, INPUT);    //Right button pulled up, push = 0
   pinMode(topbutton, INPUT);      //Left button  pulled up, push = 0

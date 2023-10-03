@@ -7,7 +7,7 @@ TFT_eSPI tft = TFT_eSPI();
 #define PIN_LCD_BL 38
 
 void setup() {
-  pinMode(PIN_POWER_ON, OUTPUT);  //enables battery power and LCD backlight
+  pinMode(PIN_POWER_ON, OUTPUT);  //enables the LCD and to run on battery
   pinMode(PIN_LCD_BL, OUTPUT);    //controls the LCD backlight
   pinMode(topbutton, INPUT);      //Left button  pulled up, push = 0
   digitalWrite(PIN_POWER_ON, HIGH);
