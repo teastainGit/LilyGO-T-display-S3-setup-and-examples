@@ -15,43 +15,25 @@ TFT_eSPI
 and a file called
 lv_conf.h
 ...and recently, many other helpful dependancies.
-*******
-Update:
-Due to rancour on the LilyGO T-Display S3 GitHub Issues section regarding not 
-being able to update the TFT_eSPI without losing the display. 
-Bodmer was approached and finally made the board work with the standard version 
-TFT_eSPI GitHub AND be updatable in Arduino IDE. The main issue was that LilyGO 
-used a more exotic 8bit parallel interface, rather that SPI.
-You may now do an "Arduino Libraries Update" to the "TFT_eSPI" library but make 
-sure the Arduino version is "version=2.5.x” 
-(the current version as of July2, 2023 is version=2.5.30).
-Or you may  use the standard "TFT_eSPI" library from Bodmer! 
-But...
-If you do an update you WILL have to edit the "User_Setup_Select.h" to comment-out the line:
-
+*****
+If you do an Arduino libraries update you WILL have to edit the "User_Setup_Select.h" to comment-out the line:
 "//#include <User_Setup.h> // Default setup is root library folder"
-
 AND un-comment:
-
 "#include <User_Setups/Setup206_LilyGo_T_Display_S3.h> // For the LilyGo T-Display S3 based ESP32S3 with ST7789 170 x 320 TFT"
-
 which is about halfway down the huge file of setups.
-This way you can safely "keep current" without fear.
-Both ways work: You can use the LilyGO supplied TFT_eSPI which does not require
-editing the User Setup OR:
-Download the latest update and edit the "User_Setup_Select.h", your choice!
+
 (You will find an edited copy of "User_Setup_Select.h" here in may repository)
 
 Now:
 Step 1, below, requires that you have already installed the ESP32 board 
-definitions and are using the latest version (I use ver 2.0.11). 
+definitions and are using the latest version. 
 It is also assumed that you have installed Arduino IDE, ver 1 or 2.
 (This is covered in many tutorials online, so I will be brief)
 If your Arduino IDE does not already have "ESP32 Arduino" (or simply esp32) 
 as shown paste this:
 https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
 into Arduino Preferences, Additional Boards Manager.
-Goto Boards manager and select esp32 by Espressif Systems, ver 2.0.11 and wait for it to load...
+Goto Boards manager and select esp32 by Espressif Systems, and wait for it to load...
 From the upper menu "Arduino Tools", Board: select ESP32 Arduino, ESP32S3 Dev Module. 
 Right at the top!
 Please see attached screenshot, "Arduino_Config.png"
@@ -76,29 +58,10 @@ just before the setup and then in setup add:
   digitalWrite(PIN_POWER_ON, HIGH);
   digitalWrite(PIN_LCD_BL, HIGH);
 
-My repository contains two examples of simple documented easy to understand program code. 
+My repository contains examples of simple, documented easy to understand program code. 
 The first one to try is "HotHead.ino" which demos most of the common things you need to program this board:
 
-Step 1) Include an image (My hothead.h logo needs to be in the same folder as each sketch).
-Step 2) Demonstrate the very high speed graphics made possible by an old school 8 bit 
-parallel interface to the LCD instead of SPI or I2C. (A 50 year old concept, lost and forgotten.)
-Step 3) The left button (marked "BOT" beside the USB connector) changes the highlighting of the rectangle text showing "left pin 0" to now show "LEFT" 
-(and right button marked "KEY”… highlights the right).
-
-Open the code and read and understand it and you're good to go. 
-Try pushing both buttons at once!
-The rest of the code is simple and helps you make your own programs.
-The second program is: "HotHead_temp_sensor.ino" which just substitutes
-a I2C temperature sensor in place of the progress bar.
-The sensor is an M5Stack ENV type, but both Adafruit and DFRobot make a 
-similar board, but possibly a different I2C address. This is 0x44, but some
-are 0x45.
-Instead of a library to try and find, I put the sensor code right in line
-with the sketch. This also helps you understand how I2C works!!!
-
-
 Solutions to common startup issues:
-
 A) Unit seems "bricked" 
    	LCD does not display, unit remains dark with no white backlight:
 	In declarations add 
@@ -154,7 +117,7 @@ F) Even after uploading the HotHead sketch you get no image on the LCD, just bla
 	(See above)
 	
 Pro-Tip:
-	If you have several different boards using TFT_eSPI library and you have installed V2.5 in your
+	If you have several different boards using TFT_eSPI library and you have installed V2.5 or greater in your
 	libraries you still need to find "User_Setup_Select.h" file and select the LilyGO T-Display S3 halfway down by 
 	un-commenting it and no others. 
 	(At the top of the file there is a reference to User_Setup.h that needs to be commented-out.
