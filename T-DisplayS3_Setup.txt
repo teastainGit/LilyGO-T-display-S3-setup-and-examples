@@ -2,11 +2,8 @@ To begin...you need to download the Zip file from LilyGO's own GitHub:
 https://github.com/Xinyuan-LilyGO/T-Display-S3
 by pressing the green button "Code" and after downloading, expand the Zip.
 
-In your libraries delete folders “TFT_eSPI" and ‘lvgl" and delete the file “lv_conf.h”
-Download the latest LilyGO T-Display S3 zip from GitHub.
-(It will not install by using the old Sketch pulldown called "Include Library> Add .ZIP Library,
-as the ZIP file is not a Library ZIP, but a Product Download that contains other things such
-as Examples, libraries and documentation. )
+In your libraries delete folders “TFT_eSPI" and ‘lvgl" and delete the file “lv_conf.h”.
+
 Expand LilyGO’s zip file and…
 Drag the folder called "T-Display-S3-main” into your Arduino folder.
 Inside the folder T-Display-S3-main there is a folder called “lib”.
