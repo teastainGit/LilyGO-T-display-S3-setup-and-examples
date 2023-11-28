@@ -69,8 +69,8 @@ A) Unit seems "bricked"
 	Then in setup add
 		pinMode(PIN_POWER_ON, OUTPUT); 	
 		pinMode(PIN_LCD_BL, OUTPUT); 	
-		digitalWrite(PIN_POWER_ON, HIGH);)	
-		digitalWrite(PIN_LCD_BL, HIGH);)	
+		digitalWrite(PIN_POWER_ON, HIGH);	
+		digitalWrite(PIN_LCD_BL, HIGH);	
 
 B) Cannot see Serial.Print on Arduino Serial Monitor
 	To enable serial monitor function for debugging, you must also set 
