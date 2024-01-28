@@ -110,15 +110,16 @@ E) When the board is shipped, the "factory.ino" sketch is calling for ESPTouch w
 
 F) Even after uploading the HotHead sketch you get no image on the LCD, just black or white background, 
 	but you can see the Tick/Tock in Serial Monitor:
-	You may not have copied ALL the files from the LilyGO repository and fully replaced the ones in
-	your Libraries folder or you did NOT resist the temptation to do an Arduino Library Update!
-	The current Arduino Library for TFT_eSPI is now Bodmer's official v2.5 but there are still setups to do. 
+	You may not have copied ALL the files from the LilyGO repository folder 'lib' and fully replaced the
+	ones in your Libraries folder or you did NOT resist the temptation to do an Arduino Library Update!
+	The current Arduino Library for TFT_eSPI is now Bodmer's official v2.5 but there are still 
+	setups to do. 
 	(See above)
 	
 Pro-Tip:
 	If you have several different boards using TFT_eSPI library and you have installed V2.5 or greater in your
-	libraries you still need to find "User_Setup_Select.h" file and select the LilyGO T-Display S3 halfway down by 
-	un-commenting it and no others. 
+	libraries you still need to find "User_Setup_Select.h" file and select the LilyGO T-Display S3 halfway
+	down by un-commenting it and no others. 
 	(At the top of the file there is a reference to User_Setup.h that needs to be commented-out.
 
 You got here!
@@ -130,8 +131,10 @@ Addendum:
 The T-Display S3 LCD backlight can be dimmed by following the instructions in:
 LCD DimmerNEW.txt in this repository or try the HotHead_DimmerNEW example.
 
-I added a text called "setup.h" in the .ino folder for convenience. 
+I added a text file called 'ArdunioBoardSetup.h in the  HotHead.ino folder for convenience. 
 While setting up the multiple config settings, you can glance at the included list!
+
+In the repository root there is also a preset 'User_Setup_Select.h' to be added to your Arduino IDE libraries TFT_eSPI folder to ensure the correct config.
 
 You can email me at teastain@me.com
 I'm open to suggestions!
