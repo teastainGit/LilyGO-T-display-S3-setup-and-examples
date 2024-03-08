@@ -1,4 +1,6 @@
 //demonstrates ESP+NOW for LilyGO T-Dislay S3
+//You require two ESP devices, then copy this sketch and upload to both ESPs,
+//but remember... enter the MAC address of the OTHER ESP!
 //there are no LCD graphics on this one! The response is via Serial.print()
 #include <esp_now.h>
 #include <WiFi.h>
@@ -7,14 +9,14 @@
 #define PIN_LCD_BL 38    // BackLight enable pin if you add graphics later
 
 //Address of OTHER board         68:   b6:   b3:   21:   63:   18
-uint8_t broadcastAddress[] = { 0x68, 0xB6, 0xB3, 0x21, 0x63, 0x18 };//of OTHER
+uint8_t broadcastAddress[] = { 0x68, 0xB6, 0xB3, 0x21, 0x63, 0x18 };  //of OTHER
 String success;
 //Structure example to send data
 //Must match the receiver structure  Button.State
 //example "digitalWrite (LED, RxButton.State);"
 //example "TxButton.State = !M5.BtnA.wasPressed();"
 typedef struct struct_message {
-  bool State;     //I chose bool for simplicity, it can be any variable type!
+  bool State;  //I chose bool for simplicity, it can be any variable type!
 } struct_message;
 
 // Create a struct_message to hold outgoing button
