@@ -1,10 +1,12 @@
 //This sketch is an example of reading time from NTP
 #define CUSTOM_TIMEZONE "CST-8" China time zone
-#include "TFT_eSPI.h"
+//#include <M5Stack.h>
+#include <TFT_eSPI.h>
 #include "hothead.h"
 #include <HTTPClient.h>
 #include <Arduino_JSON.h>
 #include <WiFi.h>
+#include "Free_Fonts.h"  //free fonts must be included in the folder and in quotes
 const char *ssid = "SSID";
 const char *password = "password";
 const char *ntpServer = "pool.ntp.org";
@@ -20,7 +22,6 @@ String jsonBuffer;
 struct tm timeinfo;
 
 void setup() {
-
   pinMode(PIN_POWER_ON, OUTPUT);  //enables the LCD and to run on battery
   pinMode(PIN_LCD_BL, OUTPUT);    //triggers the LCD backlight
   digitalWrite(PIN_POWER_ON, HIGH);
@@ -28,26 +29,28 @@ void setup() {
   configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
   Serial.begin(115200);  // be sure to set USB CDC On Boot: "Enabled"
   WiFi.mode(WIFI_STA);
-  Serial.print("In setup");
-  tft.fillRect(0, 165, 130, 60, TFT_GREEN);  //horiz, vert
-  tft.setTextColor(TFT_CYAN);
-  tft.setCursor(20, 50);
+  Serial.print("In setup test");
+  tft.fillRect(0, 165, 130, 60, TFT_CYAN);  //horiz, vert
+  tft.setFreeFont(FSS9);
+  tft.setTextColor(TFT_RED);
+  tft.setCursor(30, 50);
   tft.print("in setup");
   tft.init();
+  delay(1000);
   tft.setRotation(3);
   tft.setSwapBytes(true);
   tft.fillScreen(TFT_BLACK);  //horiz / vert<> position/dimension
   tft.pushImage(165, 0, 155, 170, hothead);
   Serial.println("Leaving setup!");
-  delay(500);
+  tft.setTextColor(TFT_RED);
+  tft.setFreeFont(FSB12);
+  tft.setCursor(5, 25);
+  tft.println("HOTHEAD!");
 }
 
 void loop() {
-  tft.setTextSize(2);
-  tft.setTextColor(TFT_RED);
-  tft.setCursor(20, 20);
-  tft.println("HOTHEAD!");
 
+  tft.setFreeFont(FSS9);
   Serial.println("In loop!");
   bool ticktock = !ticktock;
   if (ticktock) {
@@ -56,9 +59,9 @@ void loop() {
     Serial.println("tock");
   }
   printLocalTime();
-  tft.fillRect(10, 45, 130, 25, TFT_BLACK);  //horiz, vert
+  tft.fillRect(10, 32, 130, 25, TFT_BLACK);  //horiz, vert
   tft.setTextColor(TFT_GREEN);
-  tft.setCursor(20, 50);
+  tft.setCursor(30, 50);
   tft.println("looping");
   delay(100);
 }
@@ -90,12 +93,13 @@ void printLocalTime() {
   Minutes = timeinfo.tm_min;
   Serial.print("Minutes = ");
   Serial.println(Minutes);
+  tft.setFreeFont(FSS9);
   tft.setTextColor(TFT_CYAN);
-  tft.setCursor(20, 80);
-  tft.fillRect(0, 75, 160, 45, TFT_BLACK);  //horiz, vert
+  tft.setCursor(30, 80);
+  tft.fillRect(0, 63, 170, 70, TFT_BLACK);  //horiz, vert
   tft.print("Hours = ");
   tft.println(Hours);
-  tft.setCursor(5, 100);
+  tft.setCursor(15, 100);
   tft.print("Minutes = ");
   tft.println(Minutes);
   Serial.println("   ");
@@ -103,9 +107,10 @@ void printLocalTime() {
 }
 
 void initWiFi() {
-  tft.fillRect(10, 45, 130, 25, TFT_BLACK);  //horiz, vert
+  tft.setFreeFont(FSS9);
+  tft.fillRect(10, 32, 130, 25, TFT_BLACK);  //horiz, vert
   tft.setTextColor(TFT_RED);
-  tft.setCursor(20, 50);
+  tft.setCursor(30, 50);
   tft.println("init WiFi");
 
   Serial.println("init WiFi");
@@ -117,16 +122,16 @@ void initWiFi() {
   if (WiFi.status() == WL_CONNECTED) {
     Serial.println("WL  CONNECTED in initWiFi");
     WiFi.begin(ssid, password);
-    tft.fillRect(10, 45, 130, 25, TFT_BLACK);  //horiz, vert
+    tft.fillRect(10, 32, 130, 25, TFT_BLACK);  //horiz, vert
     tft.setTextColor(TFT_GREEN);
-    tft.setCursor(20, 50);
+    tft.setCursor(30, 50);
     tft.println("connected");
     delay(1000);
   } else if (WiFi.status() != WL_CONNECTED) {
     Serial.println("WL not CONNECTED in initWiFi");
-    tft.fillRect(10, 45, 130, 25, TFT_BLACK);  //horiz, vert
+    tft.fillRect(10, 32, 130, 25, TFT_BLACK);  //horiz, vert
     tft.setTextColor(TFT_GREEN);
-    tft.setCursor(20, 50);
+    tft.setCursor(30, 50);
     tft.println("No WiFi");
     WiFi.begin(ssid, password);
     delay(1000);
