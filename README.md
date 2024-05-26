@@ -12,3 +12,4 @@ Installation is "easy" if you know "exactly what to do!"
 Press the green Code button to download this repo and expand the .zip file.
 Then follow the setup text instructions in "LilyGO T-Display-S3 Setup.txt"!
 
+/Users/terrystainton/Documents/GitHub/LilyGO-T-display-S3-setup-and-examples/image

@@ -1,15 +1,18 @@
-“ESP32S3 Dev Module"
-Upload Speed: "921600"
-USB Mode: "Hardware CDC and TAG"
-USB CDC On Boot: "Enabled"
-USB Firmware MSC On Boot: "Disabled"
-USB DFU On Boot: "Disabled"
-Upload Mode: "UARTO / Hardware CDC'
-CPU Frequency: "240MHz (WiFi)"
-Flash Mode: "QIO 80MHz"
-Flash Size: "16MB (128Mb)"
-Partition Scheme: "Huge APP (3MB No OTA/1MB SPIFFS)"
-Core Debug Level: "="
-PSRAM: "OPI PSRAM"
-Arduino Runs On: "Core 1"
-Events Run On: "Core 1"
+Arduino IDE Setting      	Value
+Board				   	ESP32S3 Dev Module
+Port				     	Your port
+USB CDC On Boot			Enable
+CPU Frequency			240MHZ(WiFi)
+Core Debug Level		     	None
+USB DFU On Boot			Disable
+Erase Flash Before Upload	Disable
+Events Run On			Core1
+Flash Mode			 	QIO 80MHZ
+Flash Size			 	16MB(128Mb)
+Arduino Runs On			Core1
+USB Firmware MSC On Boot	Disable
+Partition Scheme		 	16M Flash(3M APP/9.9MB FATFS)
+PSRAM					OPI PSRAM
+Upload Mode			UART0/Hardware CDC
+Upload Speed			921600
+USB Mode			     CDC and JTAG
