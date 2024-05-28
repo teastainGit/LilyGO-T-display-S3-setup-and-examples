@@ -5,14 +5,15 @@
 #include <HTTPClient.h>
 #include <Arduino_JSON.h>
 #include <WiFi.h>
-#include "Free_Fonts.h"  //free fonts must be included in the folder and in quotes
-const char *ssid = "nnnn";
-const char *password = "nnnn";
+#include "Free_Fonts.h"  //free fonts must be included in the folder and quotes
+const char *ssid = "";
+const char *password = "";
 const char *ntpServer = "pool.ntp.org";
 const long gmtOffset_sec = -18000;
 const int daylightOffset_sec = 3600;
 int Hours;
 int Minutes;
+unsigned long OneMinute = 0;
 bool ticktock;
 TFT_eSPI tft = TFT_eSPI();
 TFT_eSprite sprite = TFT_eSprite(&tft);
@@ -35,9 +36,9 @@ void setup() {
   tft.setCursor(30, 50);
   tft.print("in setup");
   tft.init();
+  WiFi.begin(ssid, password);
   Serial.println("          in setup");
   Serial.println("  ");
-  delay(500);
   tft.setRotation(3);
   tft.setSwapBytes(true);
   tft.fillScreen(TFT_BLACK);  //horiz / vert<> position/dimension
@@ -46,9 +47,13 @@ void setup() {
   tft.setFreeFont(FSB12);
   tft.setCursor(5, 25);
   tft.println("HOTHEAD!");
+  initWiFi();
 }
 
 void loop() {
+  if (millis() > OneMinute + 60000) {
+    printLocalTime();
+  }
   tft.setFreeFont(FSS9);
   Serial.println("In loop!");
   ticktock = !ticktock;
@@ -57,7 +62,6 @@ void loop() {
   } else {
     Serial.println("tock");
   }
-  printLocalTime();
   tft.fillRect(10, 32, 130, 25, TFT_BLACK);  //horiz, vert
   tft.setTextColor(TFT_GREEN);
   tft.setCursor(30, 50);
@@ -104,7 +108,7 @@ void printLocalTime() {
   tft.print("Minutes = ");
   tft.println(Minutes);
   Serial.println("   ");
-  delay(1000);
+  OneMinute = millis();
 }
 
 void initWiFi() {
@@ -117,10 +121,9 @@ void initWiFi() {
   Serial.println("init WiFi");
   delay(500);
   WiFi.begin(ssid, password);
-  delay(1000);
+  delay(100);
   if (WiFi.status() == WL_CONNECTED) {
     Serial.println("WL  CONNECTED in initWiFi");
-    //WiFi.begin(ssid, password);
     tft.fillRect(10, 32, 130, 25, TFT_BLACK);  //horiz, vert
     tft.setTextColor(TFT_GREEN);
     tft.setCursor(30, 50);
@@ -134,7 +137,6 @@ void initWiFi() {
     tft.println("No WiFi");
     Hours = 0;
     Minutes = 0;
-    delay(1000);
   }
   delay(500);
   Serial.println("");
