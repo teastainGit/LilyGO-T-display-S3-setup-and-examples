@@ -6,8 +6,8 @@
 #include <Arduino_JSON.h>
 #include <WiFi.h>
 #include "Free_Fonts.h"  //free fonts must be included in the folder and in quotes
-const char *ssid = "ROBOT";
-const char *password = "poi8POI*";
+const char *ssid = "nnnn";
+const char *password = "nnnn";
 const char *ntpServer = "pool.ntp.org";
 const long gmtOffset_sec = -18000;
 const int daylightOffset_sec = 3600;
