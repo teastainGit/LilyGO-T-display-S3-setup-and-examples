@@ -91,12 +91,13 @@ D) In the Port Selection, if the USB flickers on and off and you cannot upload, 
 	This can be caused by a faulty sketch that is running at high speed with no delay at the 
 	end of the loop, or working with Dual Cores.
  	To enter Upload Mode:
-	press Boot and hold, press reset and release, then release Boot and go it into "Upload Mode"
+	press Boot and hold, press Reset and release, then release Boot and go it into "Upload Mode"
 	(The reset button is the little black switch beside the Boot button, on the back of the board)
 	(Alternately: Unplug the USB, hold down the Boot button whilst re-connecting USB. You are now in 
 	Upload Mode.)
-	I am using Arduino IDE 2.1.1 on a iMac M1 and almost never have to to this, except if I
+	I am using Arduino IDE 2.3.2 on a iMac M1 and almost never have to to this, except if I
 	experience difficulties connecting.
+
 	If the upload goes smoothly but the sketch does not run, i.e. no serial print or screen it is 
 	sometimes necessary to unplug the USB and plug it back in...to start the new code!
 	
