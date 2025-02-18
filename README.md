@@ -14,6 +14,7 @@ Then follow the setup text instructions in "LilyGO T-Display-S3 Setup.txt"!
 
 ![HotHeadHeadShot640](https://github.com/teastainGit/LilyGO-T-display-S3-setup-and-examples/assets/80008504/b766d283-3e03-4617-bc79-451250adff23)
 
+
 For my demo sketch of the LilyGO T-Display S3 AMOLED, non-touch, see here:
 https://github.com/teastainGit/LilyGo-T-Display-S3-AMOLED-non-touch_HotHead-Demo
 
