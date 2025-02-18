@@ -2,6 +2,7 @@
 LilyGO T-Display S3 setup and examples for Arduino IDE.
 These instructions DO NOT WORK for other LilyGO boards, especially the 
 similarly named LilyGO T-Display, or LilyGO T-Display S3 AMOLED !
+
 For my demo sketch of the LilyGO T-Display S3 AMOLED, non-touch, see here:
 
 https://github.com/teastainGit/LilyGo-T-Display-S3-AMOLED-non-touch_HotHead-Demo
