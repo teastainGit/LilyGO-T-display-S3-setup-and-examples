@@ -1,4 +1,4 @@
-//demonstrates ESP+NOW for LilyGO T-Dislay S3
+//demonstrates ESP+NOW for LilyGO T-Dislay S3. Aug 2025 ESP_NOW issue, needs stickcplus board type
 //You require two ESP devices, then copy this sketch and upload to both ESPs,
 //but remember... enter the MAC address of the OTHER ESP!
 //there are no LCD graphics on this one! The response is via Serial.print()
